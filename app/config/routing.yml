@@ -1,0 +1,4 @@
+mine_plus_main:
+    resource: "@MinePlusMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
