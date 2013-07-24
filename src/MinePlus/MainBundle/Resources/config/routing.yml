@@ -1,3 +1,3 @@
-mine_plus_main_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: MinePlusMainBundle:Default:index }
+dashboard:
+    resource: "@MinePlusMainBundle/Controller/DashboardController.php"
+    type: annotation
