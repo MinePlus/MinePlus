@@ -18,8 +18,8 @@
     <body class="{% block body_class %}{% endblock %}">
         {% block body %}
             {% block navbar %}
-                <div class="navbar navbar-inverse">
-                    <div class="navbar-inner">
+                <div class="navbar {% if config.navbar.inverse %}navbar-inverse{% endif %}">
+                    <div class="navbar-inner {% if config.navbar.rounded_borders == false%}no-rounded-borders{% endif %}">
                         <div class="container">
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
