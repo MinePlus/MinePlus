@@ -207,6 +207,7 @@ class User implements UserInterface, \Serializable
         $roles = array('ROLE_USER');
         if ($this->getAdmin()) $roles[] = 'ROLE_ADMINISTRATOR';
         if ($this->getOwner()) $roles[] = 'ROLE_OWNER';
+        return $roles;
     }
     
     /*
