@@ -10,3 +10,5 @@ services:
         arguments: ['@kernel']
         tags:
             - { name: twig.extension }
+    design_configuration:
+        alias: mineplus.twig.design_configuration_extension
