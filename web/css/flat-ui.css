@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+/*  I don't want ro rely on google!'
+    @import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
+*/
 @font-face {
   font-family: 'Flat-UI-Icons';
   src: url('../fonts/Flat-UI-Icons.eot');
@@ -3566,6 +3568,7 @@ body.vjs-full-window {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+/* We comment this out, because we define our own login style!
 .login {
   background: url(../images/login/imac.png) 0 0 no-repeat;
   background-size: 940px 778px;
@@ -3626,7 +3629,7 @@ body.vjs-full-window {
 .login-form .control-group {
   margin-bottom: 6px;
   position: relative;
-}
+}*/
 .login-form .login-field {
   border-color: transparent;
   font-size: 17px;
@@ -3635,10 +3638,10 @@ body.vjs-full-window {
   text-indent: 3px;
   width: 299px;
   margin-bottom: 10px !important;
-}
+}/*
 .login-form .login-field:focus + .login-field-icon {
   color: #1abc9c;
-}
+}*/
 .login-form .login-field-icon {
   color: #bfc9ca;
   font-size: 16px;
@@ -3650,14 +3653,14 @@ body.vjs-full-window {
   -o-transition: 0.25s;
   transition: 0.25s;
   -webkit-backface-visibility: hidden;
-}
+}/*
 .login-link {
   color: #bfc9ca;
   display: block;
   font-size: 13px;
   margin-top: 15px;
   text-align: center;
-}
+} */
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 2) {
   .login {
     background-image: url(../images/login/imac-2x.png);

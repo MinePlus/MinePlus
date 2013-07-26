@@ -1,0 +1,59 @@
+/* Color's of Flat UI */
+
+@turqoise: #1ABC9C;
+@green-sea: #16A085;
+@emerald: #2ECC71;
+@nephritis: #27AE60;
+@peter-river: #3498DB;
+@belize-hole: #2980B9;
+@amethyst: #9B59B6;
+@wisteria: #8E44AD;
+@wet-asphalt: #34495E;
+@midnight-blue: #2C3E50;
+@sun-flower: #F41C40F;
+@orange: #F39C12;
+@carrot: #E67E22;
+@pumpkin: #D35400;
+@alizarin: #E74C3C;
+@pomegranate: #C0392B;
+@clouds: #ECF0F1;
+@silver: #BDC3C7;
+@concrete: #95A5A6;
+@asbestos: #7F8C8D;
+
+@ui-bg-color: #EDEFF1;
+
+/* Mixins */
+
+.border-radius (@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.login-body {
+    background-color: @turqoise;
+}
+
+.login-form {
+    width: 350px;
+    height: 200px;
+    margin: 50px auto;
+    background-color: @ui-bg-color;
+    .border-radius(6px);
+    padding: 24px 23px 20px;
+}
+
+.login-field {
+    width: 100%;
+}
+
+.login-error {
+    .centered;
+    margin-top: 20px;
+    width: 350px;
+}

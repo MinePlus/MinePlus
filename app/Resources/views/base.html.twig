@@ -6,6 +6,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
             <link rel="stylesheet" type="text/css" href="{{ asset('css/flat-ui.css') }}" />
+            <link rel="stylesheet/less" type="text/css" href="{{ asset('less/stylesheet.less') }}" />
         {% endblock %}
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
@@ -14,7 +15,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body class="{% block body_class %}{% endblock %}">
         {% block body %}{% endblock %}
     </body>
 </html>
