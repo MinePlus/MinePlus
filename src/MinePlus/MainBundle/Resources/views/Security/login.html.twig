@@ -6,20 +6,23 @@
     {% if error %}
         <div>{{ error.message }}</div>
     {% endif %}
-
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
-
-        {#
-            If you want to control the URL the user
-            is redirected to on success (more details below)
-            <input type="hidden" name="_target_path" value="/account" />
-        #}
-
-        <button type="submit">login</button>
-    </form>
+        
+    <div class="login-screen">
+        <div class="login-icon">
+            <img src="images/login/icon.png" alt="Welcome to Mail App" />
+            <h4>Welcome to <small>Mail App</small></h4>
+        </div>
+        <div class="login-form">
+            <div class="control-group">
+                <input type="text" class="login-field" value="" placeholder="Enter your name" id="login-name" />
+                <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+            <div class="control-group">
+                <input type="password" class="login-field" value="" placeholder="Password" id="login-pass" />
+                <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+            <a class="btn btn-primary btn-large btn-block" href="#">Login</a>
+            <a class="login-link" href="#">Lost your password?</a>
+          </div>
+    </div>
 {% endblock %}
