@@ -1,3 +1,3 @@
 dashboard:
-    resource: "@MinePlusMainBundle/Controller/DashboardController.php"
-    type: annotation
+    pattern: /
+    defaults: { _controller: MinePlusMainBundle:Dashboard:index }

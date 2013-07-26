@@ -8,13 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DashboardController extends Controller
 {
-    /**
-     * @Route("/")
-     * @Template()
-     */
     public function indexAction()
     {
-        return array();
+        return $this->render("MinePlusMainBundle:Dashboard:index.html.twig");
     }
 
 }
