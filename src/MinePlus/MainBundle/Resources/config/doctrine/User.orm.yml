@@ -1,0 +1,25 @@
+MinePlus\MainBundle\Entity\User:
+    type: entity
+    table: users
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        username:
+            type: string
+            length: '16'
+        password:
+            type: string
+            length: '40'
+        email:
+            type: string
+            length: 255
+        admin:
+            type: boolean
+        owner:
+            type: boolean
+        online:
+            type: boolean
+    lifecycleCallbacks: {  }
