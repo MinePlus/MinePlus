@@ -5,4 +5,4 @@ login:
     pattern: /login
     defaults: { _controller: MinePlusMainBundle:Security:login }
 login_check:
-    pattern: /login/check
+    pattern: /login_check
