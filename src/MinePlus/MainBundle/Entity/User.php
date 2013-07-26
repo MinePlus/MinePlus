@@ -4,11 +4,12 @@ namespace MinePlus\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * User
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, \Serializable, EquatableInterface
 {
     /**
      * @var integer
@@ -249,6 +250,15 @@ class User implements UserInterface, \Serializable
         list (
             $this->id,
         ) = unserialize($serialized);
+    }
+    
+    /*
+     * @param UserInterface $user
+     * @return boolean
+     */
+    public function isEqualTo(UserInterface $user)
+    {
+        return true;
     }
     
 }
