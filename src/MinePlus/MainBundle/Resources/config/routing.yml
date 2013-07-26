@@ -1,3 +1,8 @@
 dashboard:
     pattern: /
     defaults: { _controller: MinePlusMainBundle:Dashboard:index }
+login:
+    pattern: /login
+    defaults: { _controller: MinePlusMainBundle:Security:login }
+login_check:
+    pattern: /login/check
