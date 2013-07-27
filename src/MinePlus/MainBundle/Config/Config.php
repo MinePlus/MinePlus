@@ -23,7 +23,7 @@ class Config
      * 
      * @var array
      */
-    public $config;
+    public $config = null;
     
     /*
      * Constructor
@@ -67,7 +67,7 @@ class Config
      */
     public function setOptions($options, $save = false)
     {
-        array_merge($this->config, $options);
+        $this->config = array_merge($this->config, $options);
         if ($save) $this->save();
     }
     
@@ -103,6 +103,7 @@ class Config
         if(!isset($this->config)) { // If the config hasn't been cached yet
             $parser = new Parser();
             $array = $parser->parse(file_get_contents($this->getPath()));
+            if (!is_array($array)) $array = array();
             $this->config = $array; // Save the file to the cache
             return $array;
         } else {
@@ -117,10 +118,10 @@ class Config
      */
     public function save() {
         if (!isset($this->config)) 
-            throw new Exception('Config is not written to the cache');
+            throw new \Exception('Config is not written to the cache');
         
         $dumper = new Dumper();
-        $yaml = $dumper->dump($dumper, $this->yamlInline);
+        $yaml = $dumper->dump($this->config, $this->yamlInline);
         file_put_contents($this->getPath(), $yaml);
     }
     
