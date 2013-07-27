@@ -58,7 +58,7 @@ class DesignConfigurationExtension extends \Twig_Extension
     public function getFunctions()
     {
         $function = new \Twig_SimpleFunction('config', function($key, $default = null) {
-            return $this->getOption($key, $default, true, true);
+            return $this->config->getOption($key, $default, true, true);
         });
         
         return array($function);
