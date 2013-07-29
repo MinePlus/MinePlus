@@ -31,16 +31,19 @@ class ConfigMigration extends AbstractMigration implements ContainerAwareInterfa
     
     public function postUp(Schema $schema)
     {
-        $array = $this->configUp();
+        // Get the config file
         $kernel = $this->getContainer()->get('kernel');
         $config = new Config($kernel->getRootDir().'/config/'.$this->getConfigFile());
-        $config->setOptions($array);
+        
+        // Run migration
+        $this->configUp($config);
+        
+        // Save changes
         $config->save();
     }
     
-    public function configUp()
+    public function configUp(Config $config)
     {
-        return array();
     }
     
     public function getConfigFile()
