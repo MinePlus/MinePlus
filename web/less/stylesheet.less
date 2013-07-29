@@ -21,7 +21,7 @@
 @concrete: #95A5A6;
 @asbestos: #7F8C8D;
 
-@ui-bg-color: #EDEFF1;
+@ui-color: #EDEFF1;
 
 /* Mixins */
 
@@ -39,6 +39,16 @@
     margin: 0 auto;
 }
 
+/* Content */
+
+body {
+    // See issue #1
+    overflow-y: scrool;
+    overflow-x: hidden;
+}
+
+/* Login  */
+
 .login-body {
     background-color: @turqoise;
 }
@@ -47,7 +57,7 @@
     width: 350px;
     height: 200px;
     margin: 50px auto;
-    background-color: @ui-bg-color;
+    background-color: @ui-color;
     .border-radius(6px);
     padding: 24px 23px 20px;
 }
