@@ -67,7 +67,7 @@ class Config
      */
     public function setOptions($options, $save = false)
     {
-        $this->config = array_merge($this->config, $options);
+        $this->config = array_merge_recursive($this->config, $options);
         if ($save) $this->save();
     }
     
@@ -118,7 +118,7 @@ class Config
      */
     public function save() {
         if (!isset($this->config)) 
-            throw new \Exception('Config is not written to the cache');
+            throw new ConfigException('Config is not written to the cache');
         
         $dumper = new Dumper();
         $yaml = $dumper->dump($this->config, $this->yamlInline);
