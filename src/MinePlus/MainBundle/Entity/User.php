@@ -196,6 +196,18 @@ class User implements UserInterface, \Serializable, EquatableInterface
     }
     
     /*
+     * Get url of avatar
+     * 
+     * @param int $size Sife of the avatar (px)
+     * 
+     * @return string url
+     */
+    public function getAvatarUrl($size = 50)
+    {
+        return 'https://minotar.net/avatar/'.$this->getUsername().'/'.$size.'.png';
+    }
+    
+    /*
      * Get roles
      * 
      * TODO: Create a seperate "roles" table, where roles can be dynamically
