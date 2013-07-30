@@ -2,24 +2,37 @@
 
 {% block title %}Login{% endblock %}
 
-{% block body_class %}login-body{% endblock %}
+{% block styles %}
+    .login-panel {
+        {# Not very pretty, especially for mobile devices #}
+        margin-top: 70px;
+    }
+{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div class="login-error alert alert-error">{{ error.message }}</div>
-    {% endif %}
-
-    <form action="{{ path('login_check') }}" method="post" class="login-form">
-        <div class="control-group">
-              <input type="text" name="_username" class="login-field" value="" placeholder="Enter your name" id="login-name" />
-              <label class="login-field-icon fui-user" for="login-name"></label>
+    <div class="row">
+        <div class="col-lg-4 col-offset-4">
+            <div class="login-panel panel {% if error %}panel-danger{% endif %}">
+                <div class="panel-heading">
+                        <h3 class="panel-title">Login{% if error %} <small>Please try again</small>{% endif %}</h3>
+                </div>
+                <form action="{{ path('login_check') }}" method="post">
+                    <div class="form-group">
+                        <label for="input-username">Username</label>
+                        <input type="text" name="_username" class="form-control" id="input-username" placeholder="Enter username" value="{{ last_username }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="input-password">Password</label>
+                        <input type="password" name="_password" class="form-control" id="input-password" placeholder="Password" />
+                    </div>
+                    
+                    {#
+                    There is a bug when pulling the button to the right, which
+                    looks better IMO, so we don't do it right now.
+                    #}
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
-
-            <div class="control-group">
-              <input type="password" name="_password" class="login-field" value="" placeholder="Password" id="login-pass" />
-              <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <input type="submit" class="btn btn-primary btn-large btn-block" value="Login" />
-    </form>
+        </div>
+    </div>
 {% endblock %}
