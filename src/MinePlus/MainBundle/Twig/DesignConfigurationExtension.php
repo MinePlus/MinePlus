@@ -2,8 +2,6 @@
 
 namespace MinePlus\MainBundle\Twig;
 
-use Symfony\Component\Yaml\Parser;
-use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\HttpKernel\Kernel;
 use MinePlus\MainBundle\Config\Config;
 
