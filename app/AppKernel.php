@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new MinePlus\MainBundle\MinePlusMainBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new MinePlus\WebSocketBundle\MinePlusWebSocketBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
