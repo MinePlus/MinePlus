@@ -27,6 +27,7 @@ class Chat implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $this->output->writeln($from->resourceId.': '.$msg);
+        $this->broadcast($msg);
     }
     
     public function onClose(ConnectionInterface $conn)
@@ -38,6 +39,14 @@ class Chat implements MessageComponentInterface {
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
         $conn->close();
+    }
+    
+    private function broadcast($msg, $exception = null)
+    {
+        foreach ($this->clients as $client)
+        {
+            if ($exception != $client) $client->send($msg);
+        }
     }
     
 }

@@ -43,7 +43,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <a class="btn navbar-btn btn-primary pull-right" data-toggle="modal" href="#chat-modal">Chat</a>
+                        <a class="btn navbar-btn btn-primary pull-right chat-indicator" data-toggle="modal" href="#chat-modal">Chat</a>
                     {% else %}
                         <a class="btn navbar-btn btn-default pull-right" href="{{ path('login') }}">Login</a>
                     {% endif %}
@@ -76,6 +76,17 @@
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/chat.js') }}"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var url = '{{ app.request.getHost() }}';
+                    url = 'ws://' + url.replace('/', '') + ':8081';
+                    
+                    var socket;
+                    
+                    connect(url);
+                });
+            </script>
         {% endblock %}
     </body>
 </html>
