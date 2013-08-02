@@ -49,6 +49,19 @@ class Chat implements MessageComponentInterface {
         }
     }
     
+    private function send($client, $msg)
+    {
+        if (is_object($client)) {
+            $client->send($msg);
+        } else if (is_int($client)) {
+            foreach ($this->clients as $c) {
+                if ($c->resourceId == $client) {
+                    $c->send($msg);
+                }
+            }
+        }
+    }
+    
 }
 
 ?>
