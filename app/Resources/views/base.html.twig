@@ -43,7 +43,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <a class="btn navbar-btn btn-primary pull-right chat-indicator" data-toggle="modal" href="#chat-modal">Chat</a>
+                        <a class="btn navbar-btn btn-primary pull-right disabled chat-indicator" data-toggle="modal" href="#chat-modal">Chat</a>
                     {% else %}
                         <a class="btn navbar-btn btn-default pull-right" href="{{ path('login') }}">Login</a>
                     {% endif %}
@@ -85,6 +85,7 @@
                     var socket;
                     
                     connect(url);
+                    rescaleChat();
                 });
             </script>
         {% endblock %}
