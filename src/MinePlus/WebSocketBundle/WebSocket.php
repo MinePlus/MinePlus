@@ -16,6 +16,7 @@ class WebSocket implements MessageComponentInterface {
     {
         $this->clients = new \SplObjectStorage;
         $this->output = $output;
+        $output->writeln('Server started.');
     }
     
     public function onOpen(ConnectionInterface $conn)

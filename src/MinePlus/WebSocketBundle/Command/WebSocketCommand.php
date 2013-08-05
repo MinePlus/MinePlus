@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
-use MinePlus\WebSocketBundle\Chat;
+use MinePlus\WebSocketBundle\WebSocket;
 
 class WebSocketCommand extends ContainerAwareCommand {
     
@@ -16,7 +16,7 @@ class WebSocketCommand extends ContainerAwareCommand {
      */
     public function configure()
     {
-        $this->setName('chat:start')
+        $this->setName('wsserver:start')
              ->setDescription('Long-running process that manages the websockets');
     }
     
@@ -25,7 +25,7 @@ class WebSocketCommand extends ContainerAwareCommand {
         $output->writeln('Starting Server ...');
         
         // Start server
-        $server = IoServer::factory(new WsServer(new Chat($output)), 8081);
+        $server = IoServer::factory(new WsServer(new WebSocket($output)), 8081);
         $server->run();
     }
     
