@@ -10,6 +10,15 @@
         {# For context-specific styles #}
         <style type="text/css">
             {% block styles %}
+                .chat-send {
+                    bottom: 0;
+                    top: 85%;
+                    height: 15%;
+                }
+                .chat-log {
+                    height: 85%;
+                    overflow-y: scroll;
+                }
             {% endblock %}
         </style>
     </head>
@@ -63,7 +72,17 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title">Chat</h4>
                             </div>
-                            <div class="modal-body chat-log">
+                            <div class="modal-body">
+                                <div class="chat-log">
+                                </div>
+                                <div class="chat-input row">
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" rows="2" id="chat-textarea"></textarea>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <a class="btn btn-default" id="chat-send">Send</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -76,18 +95,7 @@
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/chat.js') }}"></script>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    var url = '{{ app.request.getHost() }}';
-                    url = 'ws://' + url.replace('/', '') + ':8081';
-                    
-                    var socket;
-                    
-                    connect(url);
-                    rescaleChat();
-                });
-            </script>
+            <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
     </body>
 </html>
