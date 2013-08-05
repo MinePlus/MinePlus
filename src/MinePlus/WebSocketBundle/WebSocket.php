@@ -3,6 +3,8 @@
 namespace MinePlus\WebSocketBundle;
 
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
@@ -12,10 +14,12 @@ class WebSocket implements MessageComponentInterface {
     
     protected $output;
     
-    public function __construct(OutputInterface $output)
+    public function __construct(OutputInterface $output, InputInterface $input, ContainerInterface $container)
     {
         $this->clients = new \SplObjectStorage;
         $this->output = $output;
+        $this->input = $input;
+        $this->container = $container;
         $output->writeln('Server started.');
     }
     

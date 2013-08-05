@@ -25,7 +25,7 @@ class WebSocketCommand extends ContainerAwareCommand {
         $output->writeln('Starting Server ...');
         
         // Start server
-        $server = IoServer::factory(new WsServer(new WebSocket($output)), 8081);
+        $server = IoServer::factory(new WsServer(new WebSocket($output, $input, $this->getContainer())), 8081);
         $server->run();
     }
     
