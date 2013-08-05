@@ -1,0 +1,7 @@
+parameters:
+#    mine_plus_web_socket.example.class: MinePlus\WebSocketBundle\Example
+
+services:
+#    mine_plus_web_socket.example:
+#        class: %mine_plus_web_socket.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -10,6 +10,15 @@
         {# For context-specific styles #}
         <style type="text/css">
             {% block styles %}
+                .chat-send {
+                    bottom: 0;
+                    top: 85%;
+                    height: 15%;
+                }
+                .chat-log {
+                    height: 85%;
+                    overflow-y: scroll;
+                }
             {% endblock %}
         </style>
     </head>
@@ -43,6 +52,7 @@
                                 </ul>
                             </li>
                         </ul>
+                        <a class="btn navbar-btn btn-primary pull-right disabled chat-indicator" data-toggle="modal" href="#chat-modal">Chat</a>
                     {% else %}
                         <a class="btn navbar-btn btn-default pull-right" href="{{ path('login') }}">Login</a>
                     {% endif %}
@@ -54,6 +64,30 @@
                     {% endblock %}
                 </div>
             </div>
+            {% block chat %}
+                <div class="modal fade" id="chat-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Chat</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="chat-log">
+                                </div>
+                                <div class="chat-input row">
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" rows="2" id="chat-textarea"></textarea>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <a class="btn btn-default" id="chat-send">Send</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
             {% block footer %}
                 {# TODO: that's for the future ;) #}
             {% endblock %}
@@ -61,6 +95,7 @@
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
     </body>
 </html>
