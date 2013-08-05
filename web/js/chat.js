@@ -34,5 +34,5 @@ function setIndicator(success) {
 function rescaleChat() {
     var size = {width: $(window).width(), height: $(window).height()};
     
-    $('.modal-body').height(0.8 * size.height);
+    $('.modal-body').height(0.7 * size.height);
 }
