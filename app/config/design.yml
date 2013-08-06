@@ -1,1 +1,5 @@
-# To add lines here, create a migration!
+navbar:
+    show_avatar: true
+    avatar:
+        show: true
+        size: 20
