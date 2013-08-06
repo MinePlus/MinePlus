@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "elao/web-profiler-extra-bundle": "dev-master"
+        "elao/web-profiler-extra-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "scripts": {
         "post-install-cmd": [

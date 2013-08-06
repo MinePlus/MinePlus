@@ -7,19 +7,3 @@ MinePlus\MainBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
-        username:
-            type: string
-            length: '16'
-        password:
-            type: string
-            length: '40'
-        email:
-            type: string
-            length: 255
-        admin:
-            type: boolean
-        owner:
-            type: boolean
-        online:
-            type: boolean
-    lifecycleCallbacks: {  }
