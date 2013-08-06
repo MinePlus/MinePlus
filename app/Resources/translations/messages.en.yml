@@ -1,0 +1,16 @@
+title: MinePlus
+navbar:
+    application: MinePlus
+    dashboard: Dashboard
+    login: Login
+    logout: Logout
+login:
+    title: Login
+    error: Please try again
+    username: Username
+    password: Password
+    remember_me: Remeber me
+    submit: Submit
+    placeholder:
+        username: Enter username
+        password: Password

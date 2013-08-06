@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}MinePlus{% endblock %}</title>
+        <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
         {% endblock %}
@@ -17,14 +17,14 @@
         {% block body %}
             {% block navbar %}
                 <div class="navbar">
-                    <a class="navbar-brand" href="#">MinePlus</a>
+                    <a class="navbar-brand" href="#">{{ 'navbar.application'|trans }}</a>
                     <ul class="nav navbar-nav">
                         {# 
                             TODO: normally this should only be used for debugging,
                             we'll find a better/safer checking mechanism!
                         #}
                         <li{% if app.request.get('_route') == 'dashboard' %} class="active"{% endif %}>
-                            <a href="{{ path('dashboard') }}">Dashboard</a>
+                            <a href="{{ path('dashboard') }}">{{ 'navbar.dashboard'|trans }}</a>
                         </li>
                     </ul>
                     {% if is_granted('ROLE_USER') %}

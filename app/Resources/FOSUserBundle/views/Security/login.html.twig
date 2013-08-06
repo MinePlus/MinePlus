@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{{ 'login.title'|trans }}{% endblock %}
 
 {% block styles %}
     .login-panel {
@@ -14,24 +14,27 @@
         <div class="col-lg-4 col-offset-4">
             <div class="login-panel panel {% if error %}panel-danger{% endif %}">
                 <div class="panel-heading">
-                        <h3 class="panel-title">Login{% if error %} <small>Please try again</small>{% endif %}</h3>
+                        <h3 class="panel-title">
+                            {{ 'login.title'|trans }}
+                            {% if error %} <small>{{ 'login.error'|trans }}</small>{% endif %}
+                        </h3>
                 </div>
                 <form action="{{ path('fos_user_security_check') }}" method="post">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                     <div class="form-group">
-                        <label for="input-username">Username</label>
-                        <input type="text" name="_username" class="form-control" id="input-username" placeholder="Enter username" value="{{ last_username }}" />
+                        <label for="input-username">{{ 'login.username'|trans }}</label>
+                        <input type="text" name="_username" class="form-control" id="input-username" placeholder="{{ 'login.placeholder.username'|trans }}" value="{{ last_username }}" />
                     </div>
                     <div class="form-group">
-                        <label for="input-password">Password</label>
-                        <input type="password" name="_password" class="form-control" id="input-password" placeholder="Password" />
+                        <label for="input-password">{{ 'login.password'|trans }}</label>
+                        <input type="password" name="_password" class="form-control" id="input-password" placeholder="{{ 'login.placeholder.password'|trans }}" />
                     </div>
                     <div class="checkbox pull-left">
                         <label>
-                            <input type="checkbox" name="_remember_me">Remember me</input>
+                            <input type="checkbox" name="_remember_me">{{ 'login.remember_me'|trans }}</input>
                         </label>
                     </div>
-                    <button type="submit" name="_submit" class="btn btn-default pull-right">Submit</button>
+                    <button type="submit" name="_submit" class="btn btn-default pull-right">{{ 'login.submit'|trans }}</button>
                     {# TODO: I think we'll be able to find a better solution!#}
                     <div class="clearfix"></div>
                 </form>
