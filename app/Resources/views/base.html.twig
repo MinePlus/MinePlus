@@ -32,7 +32,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     {% if config.navbar.avatar.show %}
-                                        <img src="{{ app.user.getAvatarUrl(config.navbar.avatar.size) }}" />
+                                        {{ avatar(app.user.username, config.navbar.avatar.size)|raw }}
                                     {% endif %}
                                     {{ app.user.username }}
                                 </a>

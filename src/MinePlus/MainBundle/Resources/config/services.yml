@@ -12,3 +12,8 @@ services:
             - { name: twig.extension }
     design_configuration:
         alias: mineplus.twig.design_configuration_extension
+    mineplus.twig.avatar_extension:
+        class: MinePlus\MainBundle\Twig\AvatarExtension
+        arguments: ['@router']
+        tags:
+            - { name: twig.extension }

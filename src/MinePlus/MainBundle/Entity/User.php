@@ -12,16 +12,4 @@ class User extends BaseUser
         parent::__construct();
     }
     
-    /*
-     * Get url of avatar
-     * 
-     * @param int $size Sife of the avatar (px)
-     * 
-     * @return string url
-     */
-    public function getAvatarUrl($size = 50)
-    {
-        return 'https://minotar.net/avatar/'.$this->getUsername().'/'.$size.'.png';
-    }
-    
 }
