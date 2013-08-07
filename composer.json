@@ -22,7 +22,7 @@
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "elao/web-profiler-extra-bundle": "dev-master",
-        "cboden/Ratchet": "0.2.7"
+        "jdare/clank-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

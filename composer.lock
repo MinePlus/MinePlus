@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d8d82fc24083f50c5ef82dee476813b4",
+    "hash": "bb0b03f99d5a622fc06ed8f428131cd1",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -776,6 +776,49 @@
                 "parameters management"
             ],
             "time": "2013-04-06 17:15:44"
+        },
+        {
+            "name": "jdare/clank-bundle",
+            "version": "dev-master",
+            "target-dir": "JDare/ClankBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JDare/ClankBundle.git",
+                "reference": "762449fd25aacedebd1b405e62026700891363cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JDare/ClankBundle/zipball/762449fd25aacedebd1b405e62026700891363cb",
+                "reference": "762449fd25aacedebd1b405e62026700891363cb",
+                "shasum": ""
+            },
+            "require": {
+                "cboden/ratchet": "0.2.*",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": ">=2.1,<2.4-dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "JDare\\ClankBundle": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Dare",
+                    "email": "jeremy.d.dare@gmail.com"
+                }
+            ],
+            "description": "Symfony ClankBundle",
+            "homepage": "https://github.com/JDare/ClankBundle",
+            "keywords": [
+                "Web Socket Application"
+            ],
+            "time": "2013-06-12 17:08:47"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1756,7 +1799,8 @@
     "stability-flags": {
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "elao/web-profiler-extra-bundle": 20
+        "elao/web-profiler-extra-bundle": 20,
+        "jdare/clank-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"
