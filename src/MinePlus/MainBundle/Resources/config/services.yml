@@ -17,3 +17,6 @@ services:
         arguments: ['@router']
         tags:
             - { name: twig.extension }
+
+    mineplus.main.topic.chat:
+        class: MinePlus\MainBundle\Topic\ChatTopic

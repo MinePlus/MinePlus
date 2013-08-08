@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new MinePlus\MainBundle\MinePlusMainBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JDare\ClankBundle\JDareClankBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

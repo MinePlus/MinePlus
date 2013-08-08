@@ -31,7 +31,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [JDareClankBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -91,3 +91,12 @@ services:
     session.handler.pdo:
         class:     Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
         arguments: ["@pdo", "%pdo.db_options%"]
+        
+clank:
+    web_socket_server:
+        port: 8081
+        host: 127.0.0.1
+    topic:
+        -
+            name: chat
+            service: mineplus.main.topic.chat
