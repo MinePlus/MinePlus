@@ -80,7 +80,7 @@
                                         <textarea class="form-control" rows="2" id="chat-textarea"></textarea>
                                     </div>
                                     <div class="col-lg-2">
-                                        <a class="btn btn-default" id="chat-send">Send</a>
+                                        <a class="btn btn-default disabled" id="chat-send">Send</a>
                                     </div>
                                 </div>
                             </div>
@@ -116,11 +116,22 @@
                         $('#chat-send').click(function () {
                             session.publish('chat/channel/public', {msg: $('#chat-textarea').val()});
                             $('#chat-textarea').val('');
+                            $('#chat-send').addClass('disabled');
                         });
                     });
                     
                     ws.on('socket/disconnect', function(error) {
                         setIndicator(false);
+                    });
+                    
+                    $('#chat-textarea').bind('input propertychange', function() {
+                        if (this.value.length === 0) {
+                            $('#chat-send').addClass('disabled');
+                        } else {
+                            if ($('#chat-send').hasClass('disabled')) {
+                                $('#chat-send').removeClass('disabled');
+                            }
+                        }
                     });
                     
                 });

@@ -21,11 +21,17 @@ class ChatTopic implements TopicInterface
     public function onPublish(ConnectionInterface $conn, $topic, $event, array $exclude, array $eligible)
     {
         if ($topic->getId() == 'chat/channel/public') {
-            $topic->broadcast(array(
-                'sender' => $conn->resourceId,
-                'topic' => $topic->getId(),
-                'msg' => $event['msg']
-            ));
+            if (strlen($event['msg']) > 0) { // Prevent empty messages
+                $topic->broadcast(array(
+                    'sender' => $conn->resourceId,
+                    'topic' => $topic->getId(),
+                    'msg' => $event['msg']
+                ));
+            } else {
+                $conn->send(array(
+                    'msg' => '<i style="text-color: red;">You can\'t send empty messages!</i>'
+                ));
+            }
         }
     }
 
