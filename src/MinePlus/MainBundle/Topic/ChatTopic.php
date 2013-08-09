@@ -46,9 +46,7 @@ class ChatTopic implements TopicInterface
      */
     public function onSubscribe(ConnectionInterface $conn, $topic)
     {
-        $topic->broadcast(array(
-            'msg' => '<i style="text-align: center">'.$this->getUser($conn)->getUsername().' joined the chat</i>'
-        ));
+        $this->sendSystemBroadcast($topic, $this->getUser($conn)->getUsername().' joined the chat.');
     }
 
     /**
@@ -60,7 +58,7 @@ class ChatTopic implements TopicInterface
      */
     public function onUnSubscribe(ConnectionInterface $conn, $topic)
     {
-        $topic->broadcast('<i style="text-align: center">'.$this->getUser($conn)->getUsername().' left the chat</i>');
+        $this->sendSystemBroadcast($topic, $this->getUser($conn)->getUsername().' left the chat.');
     }
     
     /*
@@ -76,6 +74,19 @@ class ChatTopic implements TopicInterface
         $token = $conn->Session->get('_security_main');
         $token = unserialize($token);
         return $token->getUser();
+    }
+    
+    /*
+     * Broadasts a message as System
+     * 
+     * @param mixed $topic topic to broadccast the message to.
+     * @param string $msg message to send
+     */
+    public function sendSystemBroadcast($topic, $msg)
+    {
+        $topic->broadcast(array(
+            'msg' => '<b>System: '.$msg.'</b>'
+        ));
     }
 }
 
