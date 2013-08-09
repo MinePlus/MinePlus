@@ -10,14 +10,12 @@
         {# For context-specific styles #}
         <style type="text/css">
             {% block styles %}
-                .chat-send {
-                    bottom: 0;
-                    top: 85%;
-                    height: 15%;
-                }
                 .chat-log {
                     height: 85%;
                     overflow-y: scroll;
+                }
+                .chat-input {
+                    padding: 10px;
                 }
             {% endblock %}
         </style>
@@ -101,8 +99,7 @@
                 $(document).ready(function() {
                     rescaleChat();
                     
-                    var url = window.location.hostname;
-                    url = 'ws://' + url.replace('/', '') + ':8081';
+                    var url = 'ws://{{ clank_host }}:{{ clank_port }}';
                     
                     var ws = Clank.connect(url);
                     

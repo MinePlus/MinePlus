@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    websocket_host:    127.0.0.1
+    websocket_port:    8081

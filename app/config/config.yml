@@ -26,6 +26,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        clank_host: %websocket_host%
+        clank_port: %websocket_port%
 
 # Assetic Configuration
 assetic:
@@ -93,9 +96,11 @@ services:
         arguments: ["@pdo", "%pdo.db_options%"]
         
 clank:
+    session:
+        handler_id: session.handler.pdo
     web_socket_server:
-        port: 8081
-        host: 127.0.0.1
+        port: %websocket_port%
+        host: %websocket_host%
     topic:
         -
             name: chat
