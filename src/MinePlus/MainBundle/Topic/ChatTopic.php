@@ -22,10 +22,12 @@ class ChatTopic implements TopicInterface
     {
         if ($topic->getId() == 'chat/channel/public') {
             if (strlen($event['msg']) > 0) { // Prevent empty messages
+                $msg = $this->getUser($conn)->getUsername().': '.$event['msg'];
+                
                 $topic->broadcast(array(
-                    'sender' => $conn->resourceId,
+                    'sender' => $this->getUser($conn)->getUsername(),
                     'topic' => $topic->getId(),
-                    'msg' => $event['msg']
+                    'msg' => $msg
                 ));
             } else {
                 $conn->send(array(
@@ -45,7 +47,7 @@ class ChatTopic implements TopicInterface
     public function onSubscribe(ConnectionInterface $conn, $topic)
     {
         $topic->broadcast(array(
-            'msg' => '<i style="text-align: center">'.$conn->resourceId.' joined the chat</i>'
+            'msg' => '<i style="text-align: center">'.$this->getUser($conn)->getUsername().' joined the chat</i>'
         ));
     }
 
@@ -58,8 +60,23 @@ class ChatTopic implements TopicInterface
      */
     public function onUnSubscribe(ConnectionInterface $conn, $topic)
     {
-        $topic->broadcast('<i style="text-align: center">'.$conn->resourceId.' left the chat</i>');
-    }    
+        $topic->broadcast('<i style="text-align: center">'.$this->getUser($conn)->getUsername().' left the chat</i>');
+    }
+    
+    /*
+     * Extracts the user from a connection
+     * 
+     * @param \Ratchet\ConnectionInterface $conn Connection
+     * 
+     * @return \MinePlus\MainBundle\Entity\User User
+     */
+    public function getUser(ConnectionInterface $conn)
+    {
+        // This attribute is only for debugging, isn't it? :/
+        $token = $conn->Session->get('_security_main');
+        $token = unserialize($token);
+        return $token->getUser();
+    }
 }
 
 ?>
