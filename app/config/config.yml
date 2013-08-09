@@ -96,8 +96,7 @@ services:
         arguments: ["@pdo", "%pdo.db_options%"]
         
 clank:
-    session:
-        handler_id: session.handler.pdo
+    session_handler: session.handler.pdo
     web_socket_server:
         port: %websocket_port%
         host: %websocket_host%
