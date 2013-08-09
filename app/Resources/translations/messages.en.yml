@@ -14,3 +14,7 @@ login:
     placeholder:
         username: Enter username
         password: Password
+chat:
+    open: Chat
+    title: Chat
+    send: Send
