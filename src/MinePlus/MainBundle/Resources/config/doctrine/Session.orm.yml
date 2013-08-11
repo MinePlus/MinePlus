@@ -8,7 +8,8 @@ MinePlus\MainBundle\Entity\Session:
             generator:
                 strategy: AUTO
         sessionId:
-            type: integer
+            type: string
+            length: 255
             column: session_id
         data:
             type: text
