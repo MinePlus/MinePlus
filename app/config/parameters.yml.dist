@@ -16,3 +16,5 @@ parameters:
 
     websocket_host:    127.0.0.1
     websocket_port:    8081
+
+    session_handler:   mineplus.main.session.handler.doctrine

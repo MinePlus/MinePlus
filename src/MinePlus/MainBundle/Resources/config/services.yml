@@ -12,6 +12,7 @@ services:
             - { name: twig.extension }
     design_configuration:
         alias: mineplus.twig.design_configuration_extension
+        
     mineplus.twig.avatar_extension:
         class: MinePlus\MainBundle\Twig\AvatarExtension
         arguments: ['@router']
@@ -20,3 +21,8 @@ services:
 
     mineplus.main.topic.chat:
         class: MinePlus\MainBundle\Topic\ChatTopic
+        
+    mineplus.main.session.handler.doctrine:
+        class: MinePlus\MainBundle\SessionStorage\DoctrineSessionHandler
+        calls:
+            - [setDoctrine, ['@doctrine']]
