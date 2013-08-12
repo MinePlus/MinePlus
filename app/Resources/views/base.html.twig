@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
+            {% stylesheets '@MinePlusMainBundle/Resources/public/css/*' filter='cssrewrite' %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
         {% endblock %}
         
         {# For context-specific styles #}
@@ -91,10 +93,16 @@
             {% endblock %}
         {% endblock %}
         {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-            {{ clank_client() }}
-            <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+            {# I don't import just the entire js/ directory because the order
+            is important here! #}
+            {% javascripts 
+                '@MinePlusMainBundle/Resources/public/js/jquery.min.js' 
+                '@MinePlusMainBundle/Resources/public/js/bootstrap.min.js'
+                '@JDareClankBundle/Resources/public/js/*'
+                '@JDareClankBundle/Resources/public/js/vendor/*'
+                '@MinePlusMainBundle/Resources/public/js/script.js' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
             <script type="text/javascript">
                 $(document).ready(function() {
                     rescaleChat();
