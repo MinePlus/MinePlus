@@ -2,27 +2,22 @@
 
 namespace Application\Migrations;
 
-use MinePlus\MainBundle\Config\ConfigMigration;
-use MinePlus\MainBundle\Config\Config;
+use Doctrine\DBAL\Migrations\AbstractMigration,
+    Doctrine\DBAL\Schema\Schema;
 
-class Version20130730163010 extends ConfigMigration
+/*
+ * Emptied this because we do not need it anymore, but can't remove it if
+ * anybody already has executed it.
+ */
+class Version20130730163010 extends AbstractMigration
 {
     
-    public function configUp(Config $config)
+    public function up(Schema $scheme)
     {
-        $config->setOptions(array(
-            'navbar' => array(
-                'avatar' => array(
-                    'show' => true,
-                    'size' => 20
-                )
-            )
-        ));
     }
     
-    public function getConfigFile()
+    public function down(Schema $scheme)
     {
-        return 'design.yml';
     }
     
 }

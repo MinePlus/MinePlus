@@ -38,8 +38,8 @@
                         <ul class="nav navbar-nav pull-right">
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    {% if config.navbar.avatar.show %}
-                                        {{ avatar(app.user.username, config.navbar.avatar.size)|raw }}
+                                    {% if config('design.navbar.avatar.show', true) %}
+                                        {{ avatar(app.user.username, config('design.navbar.avatar.size', 20))|raw }}
                                     {% endif %}
                                     {{ app.user.username }}
                                 </a>
