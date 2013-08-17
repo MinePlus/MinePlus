@@ -5,3 +5,7 @@ dashboard:
 mineplus_main_avatar:
     pattern: /avatar/{username}/{size}
     defaults: { _controller: MinePlusMainBundle:Image:avatar, size: 128 }
+
+list:
+    pattern: /players/
+    defaults: { _controller: MinePlusMainBundle:Player:list }
