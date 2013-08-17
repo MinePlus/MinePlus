@@ -2,6 +2,19 @@
 
 {% block title %}MinePlusMainBundle:Player:list{% endblock %}
 
-{% block body %}
-<h1>Welcome to the Player:list page</h1>
+{% block content %}
+    {% for user in users %}
+        {% if loop.index % 12 == 1 %}
+            <div class="row" style="margin-top: 10px;">
+        {% endif %}
+        
+        <a href="#">
+            <div class="col-lg-1">
+                <img src="{{ avatar(user.username, null, false) }}" class="max-size" />
+            </div>
+        </a>
+        {% if loop.index % 12 == 0 %}
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
