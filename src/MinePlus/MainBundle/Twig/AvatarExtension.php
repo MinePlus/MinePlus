@@ -51,8 +51,9 @@ class AvatarExtension extends \Twig_Extension
     {
         $url = $this->router->generate('mineplus_main_avatar', array(
             'username' => $username,
-            'size' => $size
-        ), true);
+            'size' => $size,
+            '_format' => 'png'
+        ));
         
         if (!$entireTag) {
             return $url;
