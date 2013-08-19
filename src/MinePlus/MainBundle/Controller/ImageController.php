@@ -29,21 +29,24 @@ class ImageController extends Controller
         $raw = curl_exec($source);
         $status = curl_getinfo($source, CURLINFO_HTTP_CODE);
         curl_close($source);
-
+        
         if ($status != 200) {
-            return new Response(null, $status);
+            return $this->forward('MinePlusMainBundle:Image:avatar', array(
+                'username' => 'char',
+                'size' => $size
+            ));
+        } else {
+            $skin = imagecreatefromstring($raw);
+            $avatar = imagecreatetruecolor($size, $size);
+
+            imagecopyresized($avatar, $skin, 0, 0, 8, 8, $size, $size, 8, 8); // Crop out face
+            imagecolortransparent($skin, imagecolorat($skin, 63, 0)); // Fix issue with black hat
+            imagecopyresized($avatar, $skin, 0, 0, 40, 8, $size, $size, 8, 8); // Add accessoires
+
+            imagepng($avatar, $cache);
+
+            $response = file_get_contents($cache);
         }
-
-        $skin = imagecreatefromstring($raw);
-        $avatar = imagecreatetruecolor($size, $size);
-
-        imagecopyresized($avatar, $skin, 0, 0, 8, 8, $size, $size, 8, 8); // Crop out face
-        imagecolortransparent($skin, imagecolorat($skin, 63, 0)); // Fix issue with black hat
-        imagecopyresized($avatar, $skin, 0, 0, 40, 8, $size, $size, 8, 8); // Add accessoires
-
-        imagepng($avatar, $cache);
-
-        $response = file_get_contents($cache);
         
         return new Response($response, 200, array('Content-Type' => 'image/png'));
     }
