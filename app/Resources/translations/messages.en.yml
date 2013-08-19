@@ -2,6 +2,7 @@ title: MinePlus
 navbar:
     application: MinePlus
     dashboard: Dashboard
+    players: Players
     login: Login
     logout: Logout
 login:

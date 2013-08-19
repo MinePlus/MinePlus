@@ -44,6 +44,9 @@
                         <li{% if app.request.get('_route') == 'dashboard' %} class="active"{% endif %}>
                             <a href="{{ path('dashboard') }}">{{ 'navbar.dashboard'|trans }}</a>
                         </li>
+                        <li{% if app.request.get('_route') == 'mineplus_main_player_list' %} class="active"{% endif %}>
+                            <a href="{{ path('mineplus_main_player_list') }}">{{ 'navbar.players'|trans }}</a>
+                        </li>
                     </ul>
                     {% if is_granted('ROLE_USER') %}
                         <ul class="nav navbar-nav pull-right">
