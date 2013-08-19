@@ -6,6 +6,10 @@ mineplus_main_avatar:
     pattern: /avatar/{username}/{size}.{_format}
     defaults: { _controller: MinePlusMainBundle:Image:avatar }
 
-list:
+mineplus_main_player_list:
     pattern: /players/
     defaults: { _controller: MinePlusMainBundle:Player:list }
+    
+mineplus_main_profile_show:
+    pattern: /profile/{username}
+    defaults: { _controller: MinePlusMainBundle:Player:show }
