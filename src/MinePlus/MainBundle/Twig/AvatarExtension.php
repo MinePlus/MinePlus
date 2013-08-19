@@ -58,7 +58,7 @@ class AvatarExtension extends \Twig_Extension
         if (!$entireTag) {
             return $url;
         } else {
-            return '<img src="'.$url.'" title="'.$username.'" width="'.$size.'" height="'.$size.'" />';
+            return '<img src="'.$url.'" title="'.$username.'" width="'.$size.'px" height="'.$size.'px" />';
         }
     }
     
