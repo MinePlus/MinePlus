@@ -1,0 +1,22 @@
+<div class="modal fade" id="chat-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{ 'chat.title'|trans }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="chat-log">
+                </div>
+                <div class="chat-input row">
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="2" id="chat-textarea"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-default disabled" id="chat-send">{{ 'chat.send'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

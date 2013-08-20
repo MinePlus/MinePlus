@@ -1,12 +1,9 @@
-title: MinePlus
-navbar:
-    application: MinePlus
-    dashboard: Dashboard
-    players: Players
-    login: Login
-    logout: Logout
+application: MinePlus
+dashboard: Dashboard
+players: Players
+login: Login
+logout: Logout
 login:
-    title: Login
     error: Please try again
     username: Username
     password: Password

@@ -11,33 +11,35 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-lg-4 col-offset-4">
-            <div class="login-panel panel {% if error %}panel-danger{% endif %}">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel {% if error %}panel-danger{% else %}panel-default{% endif %}">
                 <div class="panel-heading">
                         <h3 class="panel-title">
-                            {{ 'login.title'|trans }}
+                            {{ 'login'|trans }}
                             {% if error %} <small>{{ 'login.error'|trans }}</small>{% endif %}
                         </h3>
                 </div>
-                <form action="{{ path('fos_user_security_check') }}" method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                    <div class="form-group">
-                        <label for="input-username">{{ 'login.username'|trans }}</label>
-                        <input type="text" name="_username" class="form-control" id="input-username" placeholder="{{ 'login.placeholder.username'|trans }}" value="{{ last_username }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="input-password">{{ 'login.password'|trans }}</label>
-                        <input type="password" name="_password" class="form-control" id="input-password" placeholder="{{ 'login.placeholder.password'|trans }}" />
-                    </div>
-                    <div class="checkbox pull-left">
-                        <label>
-                            <input type="checkbox" name="_remember_me">{{ 'login.remember_me'|trans }}</input>
-                        </label>
-                    </div>
-                    <button type="submit" name="_submit" class="btn btn-default pull-right">{{ 'login.submit'|trans }}</button>
-                    {# TODO: I think we'll be able to find a better solution!#}
-                    <div class="clearfix"></div>
-                </form>
+                <div class="panel-body">
+                    <form action="{{ path('fos_user_security_check') }}" method="post">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <div class="form-group">
+                            <label for="input-username">{{ 'login.username'|trans }}</label>
+                            <input type="text" name="_username" class="form-control" id="input-username" placeholder="{{ 'login.placeholder.username'|trans }}" value="{{ last_username }}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="input-password">{{ 'login.password'|trans }}</label>
+                            <input type="password" name="_password" class="form-control" id="input-password" placeholder="{{ 'login.placeholder.password'|trans }}" />
+                        </div>
+                        <div class="checkbox pull-left">
+                            <label>
+                                <input type="checkbox" name="_remember_me">{{ 'login.remember_me'|trans }}</input>
+                            </label>
+                        </div>
+                        <button type="submit" name="_submit" class="btn btn-default pull-right">{{ 'login.submit'|trans }}</button>
+                        {# TODO: I think we'll be able to find a better solution!#}
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

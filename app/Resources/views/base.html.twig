@@ -28,77 +28,25 @@
                 .margin-top-little {
                     margin-top: 10px;
                 }
+                .margin-right-little {
+                    margin-right: 10px;
+                }
             {% endblock %}
         </style>
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% block body %}
             {% block navbar %}
-                <div class="navbar">
-                    <a class="navbar-brand" href="#">{{ 'navbar.application'|trans }}</a>
-                    <ul class="nav navbar-nav">
-                        {# 
-                            TODO: normally this should only be used for debugging,
-                            we'll find a better/safer checking mechanism!
-                        #}
-                        <li{% if app.request.get('_route') == 'dashboard' %} class="active"{% endif %}>
-                            <a href="{{ path('dashboard') }}">{{ 'navbar.dashboard'|trans }}</a>
-                        </li>
-                        <li{% if app.request.get('_route') == 'mineplus_main_player_list' %} class="active"{% endif %}>
-                            <a href="{{ path('mineplus_main_player_list') }}">{{ 'navbar.players'|trans }}</a>
-                        </li>
-                    </ul>
-                    {% if is_granted('ROLE_USER') %}
-                        <ul class="nav navbar-nav pull-right">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    {% if config('design.navbar.avatar.show', true) %}
-                                        {{ avatar(app.user.username, config('design.navbar.avatar.size', 20))|raw }}
-                                    {% endif %}
-                                    {{ app.user.username }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ path('fos_user_security_logout') }}">{{ 'navbar.logout'|trans }}</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <a class="btn navbar-btn btn-primary pull-right disabled chat-indicator" data-toggle="modal" href="#chat-modal">{{ 'chat.open'|trans }}</a>
-                    {% else %}
-                        <a class="btn navbar-btn btn-default pull-right" href="{{ path('fos_user_security_login') }}">{{ 'navbar.login'|trans }}</a>
-                    {% endif %}
-                </div>
+                {% include '::navbar.html.twig' %}
             {% endblock %}
             <div class="row">
-                <div class="col-lg-10 col-offset-1">
+                <div class="col-md-10 col-md-offset-1">
                     {% block content %}
                     {% endblock %}
                 </div>
             </div>
             {% block chat %}
-                <div class="modal fade" id="chat-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">{{ 'chat.title'|trans }}</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="chat-log">
-                                </div>
-                                <div class="chat-input row">
-                                    <div class="col-lg-10">
-                                        <textarea class="form-control" rows="2" id="chat-textarea"></textarea>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <a class="btn btn-default disabled" id="chat-send">{{ 'chat.send'|trans }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% include '::modal/chat.html.twig' %}
             {% endblock %}
             {% block footer %}
                 {# TODO: that's for the future ;) #}
