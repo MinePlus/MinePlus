@@ -33,7 +33,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{{ path('fos_user_security_logout') }}">{{ 'logout'|trans }}</a>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ macro.icon('log-out') }}
+                                {{ 'logout'|trans }}
+                            </a>
                         </li>
                     </ul>
                 </li>

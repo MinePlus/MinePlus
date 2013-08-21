@@ -1,10 +1,16 @@
+{#
+    Note: The icon fonts are currently stored directly in the web/ directory,
+    because I wasn't able to make assetic load them. This is also the reason
+    why I disabled the 'cssrewrite' filter.
+#}
+{% import '::macros.html.twig' as macro %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets '@MinePlusMainBundle/Resources/public/css/*' filter='cssrewrite' %}
+            {% stylesheets '@MinePlusMainBundle/Resources/public/css/*' %}
                 <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
