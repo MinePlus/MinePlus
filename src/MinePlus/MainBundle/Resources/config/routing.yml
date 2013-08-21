@@ -13,3 +13,7 @@ mineplus_main_player_list:
 mineplus_main_profile_show:
     pattern: /profile/{username}
     defaults: { _controller: MinePlusMainBundle:Player:show }
+
+mineplus_main_admin_index:
+    pattern: /admin/
+    defaults: { _controller: MinePlusMainBundle:Admin:index }
