@@ -4,3 +4,10 @@
         <span class="glyphicon glyphicon-{{ icon }}"></span>
     {% endif %}
 {% endmacro %}
+        
+{% macro callout(title, text, type) %}
+    <div class="bs-callout bs-callout-{{ type|default('info') }}">
+        <h4>{{ title }}</h4>
+        <p>{{ text }}</p>
+    </div>
+{% endmacro %}
