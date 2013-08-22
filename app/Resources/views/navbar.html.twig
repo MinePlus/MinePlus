@@ -32,10 +32,17 @@
                         {{ app.user.username }}
                     </a>
                     <ul class="dropdown-menu">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('mineplus_main_admin_index') }}">
+                                    {{ macro.icon('lock') }} {{ 'admin_area'|trans }}
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}">
-                                {{ macro.icon('log-out') }}
-                                {{ 'logout'|trans }}
+                                {{ macro.icon('log-out') }} {{ 'logout'|trans }}
                             </a>
                         </li>
                     </ul>
