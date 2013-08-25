@@ -10,8 +10,21 @@ class PlayerController extends Controller
     {
         $users = $this->get('fos_user.user_manager')->findUsers();
         
+        $usersToView = array();
+        
+        if ($this->get('security.context')->isGranted('ROLE_USER')) {
+            $me = $this->get('security.context')->getToken()->getUser();
+            
+            foreach ($users as $user) {
+                if ($user->getUsername() != $me->getUsername()) 
+                    $usersToView[] = $user;
+            }
+        } else {
+            $usersToView = $users;
+        }
+        
         return $this->render('MinePlusMainBundle:Player:list.html.twig', array(
-            'users' => $users
+            'users' => $usersToView
         ));
     }
     
