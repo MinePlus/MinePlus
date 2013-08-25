@@ -23,6 +23,6 @@ class Version20130811184112 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql", "Migration can only be executed safely on 'mysql'.");
         
-        $this->addSql("ALTER TABLE Session CHANGE session_id session_id INT NOT NULL, CHANGE created created DATETIME NOT NULL");
+        $this->addSql("ALTER TABLE session CHANGE session_id session_id INT NOT NULL, CHANGE created created DATETIME NOT NULL");
     }
 }

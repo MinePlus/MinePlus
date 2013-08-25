@@ -15,7 +15,7 @@ class Version20130811172032 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql", "Migration can only be executed safely on 'mysql'.");
         
-        $this->addSql("CREATE TABLE Session (id INT AUTO_INCREMENT NOT NULL, session_id INT NOT NULL, data LONGTEXT NOT NULL, created DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
+        $this->addSql("CREATE TABLE session (id INT AUTO_INCREMENT NOT NULL, session_id INT NOT NULL, data LONGTEXT NOT NULL, created DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
     }
 
     public function down(Schema $schema)
@@ -23,6 +23,6 @@ class Version20130811172032 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql", "Migration can only be executed safely on 'mysql'.");
         
-        $this->addSql("DROP TABLE Session");
+        $this->addSql("DROP TABLE session");
     }
 }

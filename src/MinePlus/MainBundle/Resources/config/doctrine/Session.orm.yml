@@ -1,6 +1,6 @@
 MinePlus\MainBundle\Entity\Session:
     type: entity
-    table: null
+    table: session
     fields:
         id:
             type: integer
