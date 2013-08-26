@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}{{ 'login.title'|trans }}{% endblock %}
+{% block title %}{{ 'login.login'|trans }}{% endblock %}
 
 {% block styles %}
     .login-panel {
@@ -16,7 +16,7 @@
             <div class="login-panel panel {% if error %}panel-danger{% else %}panel-default{% endif %}">
                 <div class="panel-heading">
                         <h3 class="panel-title">
-                            {{ 'login'|trans }}
+                            {{ 'login.login'|trans }}
                             {% if error %} <small>{{ 'login.error'|trans }}</small>{% endif %}
                         </h3>
                 </div>
