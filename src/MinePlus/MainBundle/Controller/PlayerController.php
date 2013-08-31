@@ -31,9 +31,18 @@ class PlayerController extends Controller
     public function showAction($username)
     {
         $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
+        $manager = $this->getDoctrine()->getManager();
+        
+        if ($user->getWall() == null) {
+            $wall = new \MinePlus\MainBundle\Entity\Wall();
+            $wall->setUser($user);
+            
+            $manager->persist($wall);
+            $manager->flush();
+        }
         
         return $this->render('MinePlusMainBundle:Player:show.html.twig', array(
-            'user' => $user
+            'user' => $this->get('fos_user.user_manager')->findUserByUsername($username)
         ));
     }
 

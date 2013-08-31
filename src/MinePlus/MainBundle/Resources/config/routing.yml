@@ -10,7 +10,7 @@ mineplus_main_player_list:
     pattern: /players/
     defaults: { _controller: MinePlusMainBundle:Player:list }
     
-mineplus_main_profile_show:
+mineplus_main_player_show:
     pattern: /profile/{username}
     defaults: { _controller: MinePlusMainBundle:Player:show }
 

@@ -10,6 +10,19 @@
             </div>
         </div>
         <div class="col-md-9">
+            {% for post in user.wall.posts %}
+                {% if loop.index % 2 == 1 %}
+                    <div class="row">
+                {% endif %}
+                
+                <div class="col-md-6 margin-top-little">
+                    {% include 'MinePlusMainBundle:Player:wall_post.html.twig'  with {'post': post} only %}
+                </div>
+                            
+                {% if loop.index % 2 == 0 %}
+                    </div>
+                {% endif %}               
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

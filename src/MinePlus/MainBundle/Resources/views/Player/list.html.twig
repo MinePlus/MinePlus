@@ -8,7 +8,7 @@
             <div class="row" style="margin-top: 10px;">
         {% endif %}
         
-        <a href="{{ path('mineplus_main_profile_show', { 'username': user.username }) }}">
+        <a href="{{ path('mineplus_main_player_show', { 'username': user.username }) }}">
             <div class="col-md-1">
                 <img src="{{ avatar(user.username, 64, false) }}" class="max-size" />
             </div>

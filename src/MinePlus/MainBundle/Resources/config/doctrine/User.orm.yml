@@ -7,3 +7,7 @@ MinePlus\MainBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+    oneToOne:
+        wall:
+            targetEntity: wall
+            mappedBy: user
