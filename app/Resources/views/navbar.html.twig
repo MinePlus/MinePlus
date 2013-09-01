@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default{%if config('design.navbar.inverse', false) %}navbar-inverse{% endif %}" role="navigation">
+<nav class="navbar navbar-default {% block navbar_class %}{% endblock %}" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -11,16 +11,10 @@
     
     <div class="collapse navbar-collapse navbar-exl-collapse">
         <ul class="nav navbar-nav">
-            {# 
-                TODO: normally this should only be used for debugging,
-                we'll find a better/safer checking mechanism!
-            #}
-            <li{% if app.request.get('_route') == 'dashboard' %} class="active"{% endif %}>
-                <a href="{{ path('dashboard') }}">{{ 'dashboard'|trans }}</a>
-            </li>
-            <li{% if app.request.get('_route') == 'mineplus_main_player_list' %} class="active"{% endif %}>
-                <a href="{{ path('mineplus_main_player_list') }}">{{ 'players'|trans }}</a>
-            </li>
+            {% block navbar_items %}
+                {{ macro.navbar_item('dashboard', 'dashboard') }}
+                {{ macro.navbar_item('players', 'mineplus_main_player_list') }}
+            {% endblock %}
         </ul>
         {% if is_granted('ROLE_USER') %}
             <ul class="nav navbar-nav pull-right">
