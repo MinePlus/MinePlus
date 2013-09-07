@@ -1,0 +1,16 @@
+{% extends '::navbar.html.twig' %}
+
+{% block navbar_class %}navbar-inverse{% endblock %}
+
+{% block navbar_items %}
+    {{ macro.navbar_item('admin.title', 'mineplus_main_admin_index') }}
+    {{ macro.navbar_item('admin.design', 'mineplus_main_admin_design') }}
+{% endblock %}
+
+{% block user_dropdown %}
+    <li>
+        <a href="{{ path('dashboard') }}">
+            {{ macro.icon('log-out') }} {{ 'admin.leave'|trans }}
+        </a>
+    </li>
+{% endblock %}

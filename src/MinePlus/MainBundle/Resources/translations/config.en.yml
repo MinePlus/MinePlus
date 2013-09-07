@@ -1,0 +1,6 @@
+design:
+    navbar:
+        avatar:
+            show: Whether to show the player's navbar in his user dropdown.
+            size: Which size is this avatar going to have?
+    icons: Should we use icons? If you choose not to do, all icons will become invisible!

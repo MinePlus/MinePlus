@@ -1,4 +1,5 @@
 services:
+    # Twig extensions
     mineplus.twig.config_extension:
         class: MinePlus\MainBundle\Twig\ConfigExtension
         arguments: ['@doctrine']
@@ -11,9 +12,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    # WebSocket Topics
     mineplus.main.topic.chat:
         class: MinePlus\MainBundle\Topic\ChatTopic
         
+    # Various
     mineplus.main.session.handler.doctrine:
         class: MinePlus\MainBundle\SessionStorage\DoctrineSessionHandler
         calls:

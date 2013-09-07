@@ -1,9 +1,14 @@
 application: MinePlus
 dashboard: Dashboard
 players: Players
-admin_area: Admin Area
 login: Login
 logout: Logout
+profile:
+    messages: '{0} This user has no wall posts, why dont you create one?'
+admin:
+    title: Admin Area
+    design: Design
+    leave: Leave
 login:
     error: Please try again
     username: Username

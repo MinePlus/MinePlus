@@ -9,5 +9,5 @@ MinePlus\MainBundle\Entity\User:
                 strategy: AUTO
     oneToOne:
         wall:
-            targetEntity: wall
+            targetEntity: Wall
             mappedBy: user
