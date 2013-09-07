@@ -1,5 +1,5 @@
 services:
-    # Twig extensions
+    # Twig Extensions
     mineplus.twig.config_extension:
         class: MinePlus\MainBundle\Twig\ConfigExtension
         arguments: ['@doctrine']
@@ -11,6 +11,19 @@ services:
         arguments: ['@router']
         tags:
             - { name: twig.extension }
+            
+    mineplus.twig.navbar_extension:
+        class: MinePlus\MainBundle\Twig\NavbarExtension
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+        tags:
+            - { name: twig.extension }
+
+    # Event Listeners
+    mineplus.listener.navbar_listener:
+        class: MinePlus\MainBundle\EventListener\NavbarListener
+        tags:
+            - { name: kernel.event_listener, event: navbar.build, method: onNavbarBuild }
 
     # WebSocket Topics
     mineplus.main.topic.chat:
