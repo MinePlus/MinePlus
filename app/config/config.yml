@@ -2,6 +2,22 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+parameters:
+    pdo.db_options:
+        db_table:    session
+        db_id_col:   session_id
+        db_data_col: session_value
+        db_time_col: session_time
+        
+    priority:
+        lowest: -255
+        lower: -170
+        low: -85
+        normal: 0
+        high: 85
+        higher: 170
+        highest: 255
+
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
@@ -73,13 +89,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: MinePlus\MainBundle\Entity\User
-
-parameters:
-    pdo.db_options:
-        db_table:    session
-        db_id_col:   session_id
-        db_data_col: session_value
-        db_time_col: session_time
 
 services:
     pdo:

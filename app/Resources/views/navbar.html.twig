@@ -12,10 +12,6 @@
     <div class="collapse navbar-collapse navbar-exl-collapse">
         <ul class="nav navbar-nav">
             {% block navbar_items %}
-                {#
-                {{ macro.navbar_item('dashboard', 'dashboard') }}
-                {{ macro.navbar_item('players', 'mineplus_main_player_list') }}
-                #}
                 {% for item in navbar_items() %}
                     {{ macro.navbar_item(item.route, item.label) }}
                 {% endfor %}
