@@ -3,7 +3,8 @@ dashboard: Dashboard
 players: Players
 logout: Logout
 profile:
-    messages: '{0} This user has no wall posts, why dont you create one?'
+    wallposts: '{0} This user has no wall posts, why dont you create one?'
+    submit: Submit
 admin:
     area: Admin Area
     design: Design

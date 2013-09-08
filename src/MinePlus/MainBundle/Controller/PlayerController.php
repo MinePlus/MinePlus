@@ -3,6 +3,9 @@
 namespace MinePlus\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use MinePlus\MainBundle\Entity\Wall;
+use MinePlus\MainBundle\Entity\WallPost;
 
 class PlayerController extends Controller
 {
@@ -28,18 +31,32 @@ class PlayerController extends Controller
         ));
     }
     
-    public function showAction($username)
+    public function showAction(Request $request, $username)
     {
         $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
         $manager = $this->getDoctrine()->getManager();
         
+        
         if ($user->getWall() == null) {
-            $wall = new \MinePlus\MainBundle\Entity\Wall();
+            $wall = new Wall();
             $wall->setUser($user);
             
             $manager->persist($wall);
-            $manager->flush();
+        } else {
+            $wall = $user->getWall();
         }
+        
+        if ($request->request->has('submit_wallpost')) { // If post has been submitted
+            $post = new WallPost();
+            $post->setWall($wall);
+            $post->setUser($this->getUser());
+            $post->setMessage($request->request->get('text'));
+            $post->setCreated(new \DateTime());
+            
+            $manager->persist($post);
+        }
+        
+        $manager->flush();
         
         return $this->render('MinePlusMainBundle:Player:show.html.twig', array(
             'user' => $this->get('fos_user.user_manager')->findUserByUsername($username)

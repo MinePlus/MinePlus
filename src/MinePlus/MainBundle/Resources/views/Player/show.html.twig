@@ -26,6 +26,17 @@
                     </div>
                 {% endif %}               
             {% endfor %}
+            
+            <form action="{{ path('mineplus_main_player_show', { username: user.username }) }}" method="post" class="margin-top-little">
+                <div class="row">
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" name="text"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" name="submit_wallpost" class="btn btn-primary" value="{{ 'profile.submit'|trans }}" />
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}
