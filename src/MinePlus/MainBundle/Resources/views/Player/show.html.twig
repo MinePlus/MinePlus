@@ -10,21 +10,22 @@
             </div>
         </div>
         <div class="col-md-9">
-            {# this config item may only contain 1, 2, 3, 4, 6 or 12 (int) #}
-            {% set rows = config('design.profile.wall_rows', 3) %}
-            
             {% for post in user.wall.posts %}
-                {% if loop.index % rows == 1 %}
-                    <div class="row">
-                {% endif %}
-                
-                <div class="col-md-{{ 12 / rows }} margin-top-little">
-                    {% include 'MinePlusMainBundle:Player:wall_post.html.twig'  with {'post': post} only %}
-                </div>
-                            
-                {% if loop.index % rows == 0 %}
+                <div class="row margin-top-little">
+                    <div class="col-md-1">
+                        <a href="{{ path('mineplus_main_player_show', { username: post.user.username }) }}">
+                            {{ avatar(post.user.username, 64)|raw }}
+                        </a>
                     </div>
-                {% endif %}               
+                    <div class="col-md-11">
+                        <div class="padding-left-little">
+                            <i>{{ post.user.username }} on {{ post.created|date }}</i>
+                            <p class="padding-left-little">
+                                {{ post.message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>          
             {% endfor %}
             
             <form action="{{ path('mineplus_main_player_show', { username: user.username }) }}" method="post" class="margin-top-little">
