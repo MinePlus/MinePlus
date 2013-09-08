@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use MinePlus\MainBundle\Entity\Wall;
 use MinePlus\MainBundle\Entity\WallPost;
 
-class PlayerController extends Controller
+class UserController extends Controller
 {
     public function listAction()
     {

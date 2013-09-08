@@ -1,6 +1,6 @@
 application: MinePlus
 dashboard: Dashboard
-players: Players
+players: User
 logout: Logout
 profile:
     wallposts: '{0} This user has no wall posts, why dont you create one?'

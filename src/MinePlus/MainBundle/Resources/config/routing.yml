@@ -8,11 +8,11 @@ mineplus_main_avatar:
 
 mineplus_main_player_list:
     pattern: /players/
-    defaults: { _controller: MinePlusMainBundle:Player:list }
+    defaults: { _controller: MinePlusMainBundle:User:list }
     
 mineplus_main_player_show:
     pattern: /profile/{username}
-    defaults: { _controller: MinePlusMainBundle:Player:show }
+    defaults: { _controller: MinePlusMainBundle:User:show }
 
 mineplus_main_admin_index:
     pattern: /admin/
