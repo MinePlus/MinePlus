@@ -11,6 +11,13 @@
         <p>{{ text }}</p>
     </div>
 {% endmacro %}
+
+{% macro alert(text, type) %}
+    <div class="alert alert-{{ type|default('info') }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ text }}
+    </div>
+{% endmacro %}
         
 {% macro navbar_item(translation, route) %}
     {# 

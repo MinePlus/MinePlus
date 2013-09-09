@@ -28,6 +28,7 @@
                 </div>          
             {% endfor %}
             
+            {% if is_granted('ROLE_USER') %}
             <form action="{{ path('mineplus_main_player_show', { username: user.username }) }}" method="post" class="margin-top-little">
                 <div class="row">
                     <div class="col-md-10">
@@ -38,6 +39,14 @@
                     </div>
                 </div>
             </form>
+            {% else %}
+                <i class="margin-top-little padding-left-little">
+                    {{ macro.alert(
+                        'profile.wall.no_permission'|trans({ '%username%': user.username }),
+                        'warning'
+                    ) }}
+                </i>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

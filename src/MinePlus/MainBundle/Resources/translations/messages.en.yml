@@ -3,7 +3,9 @@ dashboard: Dashboard
 players: User
 logout: Logout
 profile:
-    wallposts: '{0} This user has no wall posts, why dont you create one?'
+    wall: 
+        posts: '{0} This user has no wall posts, why dont you create one?'
+        no_permission: You have to be logged in to post on %username%'s wall!
     submit: Submit
 admin:
     area: Admin Area
