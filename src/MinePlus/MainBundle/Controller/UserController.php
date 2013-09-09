@@ -3,9 +3,10 @@
 namespace MinePlus\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use MinePlus\MainBundle\Entity\Wall;
 use MinePlus\MainBundle\Entity\WallPost;
+use MinePlus\MainBundle\Event\Events;
+use MinePlus\MainBundle\Event\Wall\WallPostEvent;
 
 class UserController extends Controller
 {
@@ -31,8 +32,9 @@ class UserController extends Controller
         ));
     }
     
-    public function showAction(Request $request, $username)
+    public function showAction($username)
     {
+        $request = $this->getRequest();
         $user = $this->get('fos_user.user_manager')->findUserByUsername($username);
         $manager = $this->getDoctrine()->getManager();
         
@@ -53,7 +55,11 @@ class UserController extends Controller
             $post->setMessage($request->request->get('text'));
             $post->setCreated(new \DateTime());
             
-            $manager->persist($post);
+            $event = $this->get('event_dispatcher')->dispatch(Events::WALL_POST, new WallPostEvent($post));
+            
+            if (!$event->willBeDeleted()) {
+                $manager->persist($event->getPost());
+            }
         }
         
         $manager->flush();

@@ -14,7 +14,7 @@ class NavbarListener
         $event->getItemCollection()->add($item);
         
         $item = new Item('players', 'mineplus_main_player_list');
-        $event->getItemCollection()->add($item);
+        $event->getItemCollection()->add($item); 
     }
     
 }
