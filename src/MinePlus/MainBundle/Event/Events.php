@@ -25,14 +25,6 @@ class Events
      */
     const WALL_POST = 'wall.post';
     
-    /*
-     * Called when a controller tries to build a config editor
-     * 
-     * The event listener receives an
-     * MinePlus\MainBundle\Event\Config\ConfigEditorBuildEvent instance
-     */
-    const CONFIG_EDITOR_BUILD = 'config.build';
-    
 }
 
 ?>
