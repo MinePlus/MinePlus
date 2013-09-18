@@ -82,7 +82,7 @@ class UserController extends Controller
 
             $event = $this->get('event_dispatcher')->dispatch(Events::WALL_POST, new WallPostEvent($post));
 
-            if (!$event->willBeDeleted()) { // If post may be submitted
+            if (!$event->isCanceled()) { // If post may be submitted
                 $manager->persist($event->getPost());
                 $manager->flush();
                 return true;

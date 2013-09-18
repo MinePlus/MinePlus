@@ -2,7 +2,7 @@
 
 namespace MinePlus\MainBundle\Event\Navbar;
 
-use Symfony\Component\EventDispatcher\Event;
+use MinePlus\MainBundle\Event\Event;;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class NavbarEvent extends Event

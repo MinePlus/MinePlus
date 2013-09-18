@@ -3,7 +3,7 @@
 namespace MinePlus\MainBundle\Event\Wall;
 
 use MinePlus\MainBundle\Entity\Wall;
-use Symfony\Component\EventDispatcher\Event;
+use MinePlus\MainBundle\Event\Event;
 
 class WallEvent extends Event
 {
