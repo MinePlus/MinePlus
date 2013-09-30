@@ -1,4 +1,4 @@
-{% set navbar = navbar() %}
+{% set navbar = navbar(navbar_category|default('default')) %}
 <nav class="navbar navbar-default{% if navbar.color == 'black' %} navbar-inverse{% endif %}" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

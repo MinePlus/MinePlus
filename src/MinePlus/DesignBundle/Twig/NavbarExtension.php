@@ -4,6 +4,7 @@ namespace MinePlus\DesignBundle\Twig;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use MinePlus\DesignBundle\Event\Navbar\NavbarBuildEvent;
+use MinePlus\DesignBundle\Navbar\Navbar;
 use MinePlus\MainBundle\Event\Events;
 
 class NavbarExtension extends \Twig_Extension
@@ -43,9 +44,10 @@ class NavbarExtension extends \Twig_Extension
      * 
      * @return Doctrine\Common\Collections\ArrayCollection
      */
-    public function getNavbar()
+    public function getNavbar($category)
     {
-        $event = $this->dispatcher->dispatch(Events::NAVBAR_BUILD, new NavbarBuildEvent());
+        $navbar = new Navbar(array(), Navbar::COLOR_UNDEFINED, $category);
+        $event = $this->dispatcher->dispatch(Events::NAVBAR_BUILD, new NavbarBuildEvent($navbar));
         return $event->getNavbar();
     }
     

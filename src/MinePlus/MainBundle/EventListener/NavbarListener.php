@@ -35,8 +35,15 @@ class NavbarListener
                 new Item($this->translator->trans('dashboard'), $this->router->generate('dashboard')),
                 new Item($this->translator->trans('players'), $this->router->generate('mineplus_main_player_list'))
             );
-            foreach ($items as $item) $navbar->getItems()->add($item);
-        }
+        } else if ($navbar->getCategory() == Navbar::CATEGORY_ADMIN) {
+            $navbar->setColor(Navbar::COLOR_BLACK);
+            $items = array(
+                new Item($this->translator->trans('admin.area'), $this->router->generate('mineplus_main_admin_index')),
+                new Item($this->translator->trans('admin.design'), $this->router->generate('mineplus_main_admin_design'))
+            );
+        } else $items = array();
+        
+        foreach ($items as $item) $navbar->getItems()->add($item);
     }
     
 }

@@ -2,4 +2,6 @@
 
 {% block title %}{{ 'admin.area'|trans }}{% endblock %}
 
-{% block navbar %}{% include 'MinePlusMainBundle:Admin:navbar.html.twig' %}{% endblock %}
+{% block navbar %}
+    {% include '::navbar.html.twig' with {'navbar_category': 'admin'}%}
+{% endblock %}
