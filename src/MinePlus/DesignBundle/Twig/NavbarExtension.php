@@ -1,9 +1,9 @@
 <?php
 
-namespace MinePlus\MainBundle\Twig;
+namespace MinePlus\DesignBundle\Twig;
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use MinePlus\MainBundle\Event\Navbar\NavbarBuildEvent;
+use MinePlus\DesignBundle\Event\Navbar\NavbarBuildEvent;
 use MinePlus\MainBundle\Event\Events;
 
 class NavbarExtension extends \Twig_Extension
@@ -34,7 +34,7 @@ class NavbarExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('navbar_items', array($this, 'getNavbarItems'))
+            new \Twig_SimpleFunction('navbar', array($this, 'getNavbar'))
         );
     }
     
@@ -43,10 +43,10 @@ class NavbarExtension extends \Twig_Extension
      * 
      * @return Doctrine\Common\Collections\ArrayCollection
      */
-    public function getNavbarItems()
+    public function getNavbar()
     {
         $event = $this->dispatcher->dispatch(Events::NAVBAR_BUILD, new NavbarBuildEvent());
-        return $event->getItemCollection();
+        return $event->getNavbar();
     }
     
 }

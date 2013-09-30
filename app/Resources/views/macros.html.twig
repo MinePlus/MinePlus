@@ -19,12 +19,8 @@
     </div>
 {% endmacro %}
         
-{% macro navbar_item(translation, route) %}
-    {# 
-        TODO: normally this should only be used for debugging,
-        we'll find a better/safer checking mechanism!
-    #}
-    <li{% if app.request.get('_route') == route %} class="active"{% endif %}>
-        <a href="{{ path(route) }}">{{ translation|trans }}</a>
+{% macro navbar_item(url, label) %}
+    <li>
+        <a href="{{ url }}">{{ label }}</a>
     </li>
 {% endmacro %}

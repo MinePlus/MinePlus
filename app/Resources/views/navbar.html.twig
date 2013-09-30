@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default {% block navbar_class %}{% endblock %}" role="navigation">
+{% set navbar = navbar() %}
+<nav class="navbar navbar-default{% if navbar.color == 'black' %} navbar-inverse{% endif %}" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -12,8 +13,8 @@
     <div class="collapse navbar-collapse navbar-exl-collapse">
         <ul class="nav navbar-nav">
             {% block navbar_items %}
-                {% for item in navbar_items() %}
-                    {{ macro.navbar_item(item.route, item.label) }}
+                {% for item in navbar.getItems() %}
+                    {{ macro.navbar_item(item.url, item.label) }}
                 {% endfor %}
             {% endblock %}
         </ul>

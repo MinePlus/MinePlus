@@ -1,6 +1,6 @@
 <?php
 
-namespace MinePlus\MainBundle\Event\Navbar;
+namespace MinePlus\DesignBundle\Event\Navbar;
 
 class NavbarBuildEvent extends NavbarEvent
 {

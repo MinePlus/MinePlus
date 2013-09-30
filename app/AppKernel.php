@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JDare\ClankBundle\JDareClankBundle(),
             new MinePlus\MinecraftBundle\MinePlusMinecraftBundle(),
+            new MinePlus\DesignBundle\MinePlusDesignBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
