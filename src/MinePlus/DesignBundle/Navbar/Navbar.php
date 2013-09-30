@@ -71,7 +71,7 @@ class Navbar
     public function setColor($color)
     {
         $this->color = $color;
-        return this; // allow method chaining
+        return $this; // allow method chaining
     }
     
     /*
