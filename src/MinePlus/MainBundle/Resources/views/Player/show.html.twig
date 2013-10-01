@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-11">
                         <div class="padding-left-little">
-                            <i>{{ post.user.username }} on {{ post.created|date }}</i>
+                            <i>{{ post.user.username }} {{ post.created|time_diff }}</i>
                             <p class="padding-left-little">
                                 {{ post.message }}
                             </p>

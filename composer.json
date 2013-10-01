@@ -23,7 +23,8 @@
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "elao/web-profiler-extra-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "jdare/clank-bundle": "dev-master"
+        "jdare/clank-bundle": "dev-master",
+        "nesbot/carbon": "1.*"
     },
     "scripts": {
         "post-install-cmd": [

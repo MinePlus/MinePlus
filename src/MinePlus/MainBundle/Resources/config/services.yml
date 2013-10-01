@@ -12,6 +12,11 @@ services:
         tags:
             - { name: twig.extension }
 
+    mineplus.twig.datetime_extension:
+        class: MinePlus\MainBundle\Twig\DateTimeExtension
+        tags:
+            - { name: twig.extension }
+
     # Event Listeners
     mineplus.listener.navbar_listener:
         class: MinePlus\MainBundle\EventListener\NavbarListener
