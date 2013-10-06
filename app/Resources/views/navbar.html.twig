@@ -1,0 +1,56 @@
+{% set navbar = navbar(navbar_category|default('default')) %}
+<nav class="navbar navbar-default{% if navbar.color == 'black' %} navbar-inverse{% endif %}" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">{{ 'application'|trans }}</a>
+    </div>
+    
+    <div class="collapse navbar-collapse navbar-exl-collapse">
+        <ul class="nav navbar-nav">
+            {% block navbar_items %}
+                {% for item in navbar.getItems() %}
+                    {{ macro.navbar_item(item.url, item.label) }}
+                {% endfor %}
+            {% endblock %}
+        </ul>
+        {% if is_granted('ROLE_USER') %}
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {% if config('design.navbar.avatar.show', true) %}
+                            {{ avatar(app.user.username, config('design.navbar.avatar.size', 20))|raw }}
+                        {% endif %}
+                        {{ app.user.username }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% block user_dropdown %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('mineplus_main_admin_index') }}">
+                                        {{ macro.icon('lock') }} {{ 'admin.area'|trans }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                            {% endif %}
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ macro.icon('log-out') }} {{ 'logout'|trans }}
+                                </a>
+                            </li>
+                        {% endblock %}
+                    </ul>
+                </li>
+            </ul>
+            
+            {# Chat status indicator/opener #}
+            <a class="btn navbar-btn btn-primary disabled chat-indicator pull-right margin-right-little" data-toggle="modal" href="#chat-modal">{{ 'chat.open'|trans }}</a>
+        {% else %}
+            <a class="btn navbar-btn btn-default pull-right" href="{{ path('fos_user_security_login') }}">{{ 'login.login'|trans }}</a>
+        {% endif %}
+    </div>
+</nav>

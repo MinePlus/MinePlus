@@ -1,0 +1,26 @@
+{% macro icon(icon) %}
+    {# For a complete list of icons, visit http://getbootstrap.com/components/#glyphicons-glyphs #}
+    {% if config('design.icons', true) %}
+        <span class="glyphicon glyphicon-{{ icon }}"></span>
+    {% endif %}
+{% endmacro %}
+        
+{% macro callout(title, text, type) %}
+    <div class="bs-callout bs-callout-{{ type|default('info') }}">
+        <h4>{{ title }}</h4>
+        <p>{{ text }}</p>
+    </div>
+{% endmacro %}
+
+{% macro alert(text, type) %}
+    <div class="alert alert-{{ type|default('info') }} alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ text }}
+    </div>
+{% endmacro %}
+        
+{% macro navbar_item(url, label) %}
+    <li>
+        <a href="{{ url }}">{{ label }}</a>
+    </li>
+{% endmacro %}

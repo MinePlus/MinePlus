@@ -1,0 +1,8 @@
+<div class="media">
+    <a class="pull-left" href="{{ path('mineplus_main_player_show', {'username': post.user.username}) }}">
+        <img class="media-object" src="{{ avatar(post.user.username, 64, false) }}">
+    </a>
+    <div class="media-body">
+        {{ post.message }}
+    </div>
+</div>

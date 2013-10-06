@@ -1,0 +1,21 @@
+MinePlus\MainBundle\Entity\Wall:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: wall
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    oneToMany:
+        posts:
+            targetEntity: WallPost
+            mappedBy: wall
+    lifecycleCallbacks: {  }

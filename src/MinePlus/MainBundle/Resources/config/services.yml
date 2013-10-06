@@ -1,0 +1,35 @@
+services:
+    # Twig Extensions
+    mineplus.twig.config_extension:
+        class: MinePlus\MainBundle\Twig\ConfigExtension
+        arguments: ['@doctrine']
+        tags:
+            - { name: twig.extension }
+        
+    mineplus.twig.avatar_extension:
+        class: MinePlus\MainBundle\Twig\AvatarExtension
+        arguments: ['@router']
+        tags:
+            - { name: twig.extension }
+
+    mineplus.twig.datetime_extension:
+        class: MinePlus\MainBundle\Twig\DateTimeExtension
+        tags:
+            - { name: twig.extension }
+
+    # Event Listeners
+    mineplus.listener.navbar_listener:
+        class: MinePlus\MainBundle\EventListener\NavbarListener
+        arguments: ['@router', '@translator']
+        tags:
+            - { name: kernel.event_listener, event: navbar.build, method: onNavbarBuild }
+
+    # WebSocket Topics
+    mineplus.main.topic.chat:
+        class: MinePlus\MainBundle\Topic\ChatTopic
+        
+    # Various
+    mineplus.main.session.handler.doctrine:
+        class: MinePlus\MainBundle\SessionStorage\DoctrineSessionHandler
+        calls:
+            - [setDoctrine, ['@doctrine']]

@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            {{ avatar(user.username, 128)|raw }}
+            <div class="panel margin-top-little">
+            </div>
+        </div>
+        <div class="col-md-9">
+            {% for post in user.wall.posts %}
+                <div class="row margin-top-little">
+                    <div class="col-md-1">
+                        <a href="{{ path('mineplus_main_player_show', { username: post.user.username }) }}">
+                            {{ avatar(post.user.username, 64)|raw }}
+                        </a>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="padding-left-little">
+                            <i>{{ post.user.username }} {{ post.created|time_diff }}</i>
+                            <p class="padding-left-little">
+                                {{ post.message }}
+                            </p>
+                        </div>
+                    </div>
+                </div>          
+            {% endfor %}
+            
+            {% if is_granted('ROLE_USER') %}
+            <form action="{{ path('mineplus_main_player_show', { username: user.username }) }}" method="post" class="margin-top-little">
+                <div class="row">
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" name="text"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" name="submit_wallpost" class="btn btn-primary" value="{{ 'profile.submit'|trans }}" />
+                    </div>
+                </div>
+            </form>
+            {% else %}
+                <i class="margin-top-little padding-left-little">
+                    {{ macro.alert(
+                        'profile.wall.no_permission'|trans({ '%username%': user.username }),
+                        'warning'
+                    ) }}
+                </i>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

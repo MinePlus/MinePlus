@@ -1,0 +1,18 @@
+MinePlus\MainBundle\Entity\Session:
+    type: entity
+    table: session
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        sessionId:
+            type: string
+            length: 255
+            column: session_id
+        data:
+            type: text
+        created:
+            type: datetimetz
+    lifecycleCallbacks: {  }
