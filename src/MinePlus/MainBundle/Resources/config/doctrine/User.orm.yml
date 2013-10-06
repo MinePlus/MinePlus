@@ -1,0 +1,13 @@
+MinePlus\MainBundle\Entity\User:
+    type: entity
+    table: users
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToOne:
+        wall:
+            targetEntity: Wall
+            mappedBy: user

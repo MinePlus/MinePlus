@@ -1,0 +1,7 @@
+services:
+    mineplus.design.twig.navbar_extension:
+        class: MinePlus\DesignBundle\Twig\NavbarExtension
+        calls:
+            - [setDispatcher, ['@event_dispatcher']]
+        tags:
+            - { name: twig.extension }

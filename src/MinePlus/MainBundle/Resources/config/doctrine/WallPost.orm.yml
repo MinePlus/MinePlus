@@ -1,0 +1,26 @@
+MinePlus\MainBundle\Entity\WallPost:
+    type: entity
+    table: wall_post
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        message:
+            type: text
+        created:
+            type: datetime
+    manyToOne:
+        user:
+            targetEntity: User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        wall:
+            targetEntity: Wall
+            inversedBy: posts
+            joinColumn:
+                name: wall_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MinePlusMainBundle:Player:list{% endblock %}
+
+{% block content %}
+    {% for user in users %}
+        {% if loop.index % 12 == 1 %}
+            <div class="row" style="margin-top: 10px;">
+        {% endif %}
+        
+        <a href="{{ path('mineplus_main_player_show', { 'username': user.username }) }}">
+            <div class="col-md-1">
+                <img src="{{ avatar(user.username, 64, false) }}" class="max-size" />
+            </div>
+        </a>
+        {% if loop.index % 12 == 0 %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

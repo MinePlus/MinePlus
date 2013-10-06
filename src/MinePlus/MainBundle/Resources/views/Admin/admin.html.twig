@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'admin.area'|trans }}{% endblock %}
+
+{% block navbar %}
+    {% include '::navbar.html.twig' with {'navbar_category': 'admin'}%}
+{% endblock %}
