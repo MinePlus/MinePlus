@@ -4,7 +4,7 @@ namespace MinePlus\MainBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PlayerControllerTest extends WebTestCase
+class UserControllerTest extends WebTestCase
 {
     public function testList()
     {
