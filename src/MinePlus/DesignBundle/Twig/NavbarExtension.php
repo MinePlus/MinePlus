@@ -30,6 +30,8 @@ class NavbarExtension extends \Twig_Extension
     /*
      * Get functions
      * 
+     * @codeCoverageIgnore
+     * 
      * @return array
      */
     public function getFunctions()
