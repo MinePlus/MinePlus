@@ -11,15 +11,16 @@ class AvatarExtension extends \Twig_Extension
      */
     private $router;
     
+    /*
+     * @param \Symfony\Component\Routing\Router $router
+     */
     public function __construct(Router $router)
     {
         $this->router = $router;
     }
     
     /*
-     * Get name of the extension
-     * 
-     * @return string
+     * {@inheritDoc}
      */
     public function getName()
     {
@@ -27,9 +28,7 @@ class AvatarExtension extends \Twig_Extension
     }
     
     /*
-     * Get functions
-     * 
-     * @return array
+     * {@inheritDoc}
      */
     public function getFunctions()
     {

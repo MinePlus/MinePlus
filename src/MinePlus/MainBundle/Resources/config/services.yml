@@ -2,7 +2,7 @@ services:
     # Twig Extensions
     mineplus.twig.config_extension:
         class: MinePlus\MainBundle\Twig\ConfigExtension
-        arguments: ['@doctrine']
+        arguments: ['@doctrine.orm.entity_manager']
         tags:
             - { name: twig.extension }
         

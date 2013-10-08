@@ -2,31 +2,29 @@
 
 namespace MinePlus\MainBundle\Twig;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\Persistence\ObjectManager;
 use MinePlus\MainBundle\Entity\Config;
 
 class ConfigExtension extends \Twig_Extension
 {
     
     /*
-     * @var Doctrine\ORM\EntityManager
+     * @var \Doctrine\Common\Persistence\ObjectManager
      */
     protected $entityManager;
     
     /*
      * Constructor
      * 
-     * @param Doctrine\Bundle\DoctrineBundle\Registry $registry Doctrine Registry
+     * @param \Doctrine\Common\Persistence\ObjectManager $em EntityManager
      */
-    public function __construct(Registry $registry)
+    public function __construct(ObjectManager $em)
     {
-        $this->entityManager = $registry->getManager();
+        $this->entityManager = $em;
     }
     
     /*
-     * Get name of the extension
-     * 
-     * @return string
+     * {@inheritDoc}
      */
     public function getName()
     {
@@ -34,9 +32,7 @@ class ConfigExtension extends \Twig_Extension
     }
     
     /*
-     * Get functions
-     * 
-     * @return array
+     * {@inheritDoc}
      */
     public function getFunctions()
     {
@@ -57,7 +53,7 @@ class ConfigExtension extends \Twig_Extension
             $config->setValue($default);
             $this->entityManager->persist($config);
             $this->entityManager->flush();
-        } else {
+        } else if (is_array($config)) {
             $config = $config[0];
         }
         
