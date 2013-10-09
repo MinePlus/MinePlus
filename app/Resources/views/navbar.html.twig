@@ -29,14 +29,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         {% block user_dropdown %}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li>
-                                    <a href="{{ path('mineplus_main_admin_index') }}">
-                                        {{ macro.icon('lock') }} {{ 'admin.area'|trans }}
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                            {% endif %}
                             <li>
                                 <a href="{{ path('fos_user_security_logout') }}">
                                     {{ macro.icon('log-out') }} {{ 'logout'|trans }}

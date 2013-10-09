@@ -21,6 +21,11 @@ class AppKernel extends Kernel
             new JDare\ClankBundle\JDareClankBundle(),
             new MinePlus\MinecraftBundle\MinePlusMinecraftBundle(),
             new MinePlus\DesignBundle\MinePlusDesignBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

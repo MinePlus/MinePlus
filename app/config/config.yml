@@ -113,3 +113,19 @@ clank:
         -
             name: chat
             service: mineplus.main.topic.chat
+            
+sonata_admin:
+    title: MinePlus
+    security:
+        handler: sonata.admin.security.handler.role
+        acl_user_manager: fos_user.user_manager
+    options:
+        html5_validate: true
+        confirm_exit: true
+    persist_filters: false
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

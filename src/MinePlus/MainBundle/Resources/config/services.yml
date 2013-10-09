@@ -33,3 +33,15 @@ services:
         class: MinePlus\MainBundle\SessionStorage\DoctrineSessionHandler
         calls:
             - [setDoctrine, ['@doctrine']]
+            
+    # Admin
+    sonata.admin.user:
+        class: MinePlus\MainBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Users', label: 'Users' }
+        arguments:
+            - ~
+            - MinePlus\MainBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [MinePlusMainBundle]]
