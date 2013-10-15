@@ -6,14 +6,14 @@ class Events
 {
     
     /*
-     * Called when a view tries to generate a navbar.
+     * Called when the builder renders a menu.
      * 
      * The event listener receives an 
-     * MinePlus\MainBundle\Event\Navbar\NavbarBuildEvent instance.
+     * MinePlus\MainBundle\Event\Menu\MenuBuildEvent instance.
      * 
      * @var string
      */
-    const NAVBAR_BUILD = 'navbar.build';
+    const MENU_BUILD = 'menu.build';
     
     /*
      * Called BEFORE a post is published to a wall.
