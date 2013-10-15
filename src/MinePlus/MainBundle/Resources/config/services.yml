@@ -49,7 +49,14 @@ services:
     # Menu
     mineplus.main.bootstrap_renderer:
         class: MinePlus\MainBundle\Menu\BootstrapRenderer
+        scope: request
         calls:
             - [ setTemplatingEngine, ['@templating']]
+            - [ setCurrentMarker, ['@menu.current_marker']]
         tags:
             - { name: knp_menu.renderer, alias: bootstrap }
+            
+    menu.current_marker:
+        class: MinePlus\MainBundle\Menu\CurrentMarker
+        scope: request
+        arguments: ['@request']
