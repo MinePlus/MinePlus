@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JDare\ClankBundle\JDareClankBundle(),
             new MinePlus\MinecraftBundle\MinePlusMinecraftBundle(),
-            new MinePlus\DesignBundle\MinePlusDesignBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),

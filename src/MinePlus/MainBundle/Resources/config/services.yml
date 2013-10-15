@@ -45,3 +45,11 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [MinePlusMainBundle]]
+            
+    # Menu
+    mineplus.main.bootstrap_renderer:
+        class: MinePlus\MainBundle\Menu\BootstrapRenderer
+        calls:
+            - [ setTemplatingEngine, ['@templating']]
+        tags:
+            - { name: knp_menu.renderer, alias: bootstrap }

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "9ba1a76eba18eb7e0e74fb445662e2da",
+    "hash": "2afeea18c4e3a1f44cd830cdd2f075ea",
     "packages": [
         {
             "name": "cboden/ratchet",

@@ -13,7 +13,7 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('username', 'text', array('label' => 'Username'))
+            ->add('username', 'text', array('disabled' => true))
             ->add('email', 'email')
             ->add('password', 'password');
     }
@@ -27,7 +27,8 @@ class UserAdmin extends Admin
         $listMapper
             ->addIdentifier('username')
             ->add('email', 'email')
-            ->add('lastLogin');
+            ->add('lastLogin')
+            ->add('enabled', null, array('editable' => true));
     }
     
 }

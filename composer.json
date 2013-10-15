@@ -24,7 +24,8 @@
         "jdare/clank-bundle": "dev-master",
         "nesbot/carbon": "1.*",
         "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master"
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "knplabs/knp-menu-bundle": "~1.1"
     },
     "scripts": {
         "post-install-cmd": [
