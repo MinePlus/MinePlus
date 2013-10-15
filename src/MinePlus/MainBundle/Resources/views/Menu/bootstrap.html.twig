@@ -4,7 +4,7 @@
     {% set navbar_class = 'navbar-inverse' %}
 {% endif %}
 
-<nav class="navbar navbar-default {{ navbar_class|default }}">
+<nav class="navbar navbar-default {{ navbar_class|default }}" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -31,7 +31,7 @@
         
         {% if is_granted('ROLE_USER') %}
             {% if user_context|default(true) == true %}
-                <ul class="nav navbar-nav pull-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             {{ avatar(app.user.username, avatar_size|default(20))|raw }}
@@ -51,7 +51,7 @@
             {% endif %}
         {% else %}
             {% if login_button|default(true) == true %}
-                <a class="btn navbar-btn btn-default pull-right" href="{{ path('fos_user_security_login') }}">
+                <a class="btn navbar-btn btn-default navbar-right" href="{{ path('fos_user_security_login') }}">
                     {{ 'login.login'|trans }}
                 </a>
             {% endif %}
