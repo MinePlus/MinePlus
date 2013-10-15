@@ -12,11 +12,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    mineplus.twig.datetime_extension:
-        class: MinePlus\MainBundle\Twig\DateTimeExtension
-        tags:
-            - { name: twig.extension }
-
     # WebSocket Topics
     mineplus.main.topic.chat:
         class: MinePlus\MainBundle\Topic\ChatTopic
