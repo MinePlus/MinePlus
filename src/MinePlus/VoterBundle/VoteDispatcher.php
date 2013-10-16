@@ -39,6 +39,8 @@ class VoteDispatcher
                 $level = $level + $returnedLevel * $multiplicator;
             }
         }
+        
+        return $level;
     }
     
 }
