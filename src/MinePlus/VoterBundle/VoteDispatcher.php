@@ -20,10 +20,10 @@ class VoteDispatcher
     
     public function decide($eventName, $event)
     {
-        return (boolean) $this->getLevel($eventName, $event);
+        return ($this->getLevel($eventName, $event) <= 0) ? false : true;
     }
     
-    protected function getLevel($eventName, $event)
+    public function getLevel($eventName, $event)
     {
         $level = 0;
         
