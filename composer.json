@@ -25,7 +25,8 @@
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "~1.1",
-        "knplabs/knp-time-bundle": "dev-master"
+        "knplabs/knp-time-bundle": "dev-master",
+        "mockery/mockery": "~0.8.0"
     },
     "scripts": {
         "post-install-cmd": [
@@ -56,5 +57,8 @@
         "branch-alias": {
             "dev-master": "2.3-dev"
         }
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.8.0"
     }
 }
