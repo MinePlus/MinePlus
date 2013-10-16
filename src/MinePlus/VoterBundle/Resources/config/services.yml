@@ -1,0 +1,6 @@
+parameters:
+#    mine_plus_voter.example.class: MinePlus\VoterBundle\Example
+
+services:
+    vote_dispatcher:
+        class: MinePlus\VoterBundle\VoteDispatcher
