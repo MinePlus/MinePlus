@@ -18,6 +18,30 @@ class VoteDispatcher
         $this->voters[$eventName][$multiplicator][] = $voter;
     }
     
+    
+    public function order($array, $eventName)
+    {
+        $subjects = array();
+        foreach ($array as $subject) {
+            $level = $this->getLevel($eventName. $subject);
+            
+            $subjects[$level][] = $subject;
+        }
+        
+        arsort($subjects);
+        
+        $sorted = array();
+        foreach ($sorted as $level => $coequalSubjects) {
+            shuffle($coequalSubjects);
+            
+            foreach($coequalSubjects as $subject) {
+                $sorted[] = $subject;
+            }
+        }
+        
+        return $sorted;
+    }
+    
     public function decide($eventName, $event)
     {
         return ($this->getLevel($eventName, $event) <= 0) ? false : true;
