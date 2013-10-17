@@ -129,3 +129,8 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts: [admin]
+            
+fos_message:
+    db_driver: orm
+    thread_class: MinePlus\MainBundle\Entity\Thread
+    message_class: MinePlus\MainBundle\Entity\Message

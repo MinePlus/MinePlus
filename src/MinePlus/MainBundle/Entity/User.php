@@ -2,9 +2,10 @@
 
 namespace MinePlus\MainBundle\Entity;
 
+use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 
-class User extends BaseUser
+class User extends BaseUser implements ParticipantInterface
 {
     
     /*

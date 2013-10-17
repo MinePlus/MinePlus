@@ -1,0 +1,15 @@
+MinePlus\MainBundle\Entity\MessageMetadata:
+    type: entity
+    table: message_metadata
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        message:
+            targetEntity: MinePlus\MainBundle\Entity\Message
+            inversedBy: metadata
+        participant:
+            targetEntity: MinePlus\MainBundle\Entity\User

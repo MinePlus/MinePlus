@@ -1,0 +1,20 @@
+MinePlus\MainBundle\Entity\Message:
+    type: entity
+    table: message
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        thread:
+            targetEntity: MinePlus\MainBundle\Entity\Thread
+            inversedBy: messages
+        sender:
+            targetEntity: MinePlus\MainBundle\Entity\User
+    oneToMany:
+        metadata:
+            targetEntity: MinePlus\MainBundle\Entity\MessageMetadata
+            mappedBy: message
+            cascade: [all]

@@ -1,0 +1,15 @@
+MinePlus\MainBundle\Entity\ThreadMetadata:
+    type: entity
+    table: thread_metadata
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        thread:
+            targetEntity: MinePlus\MainBundle\Entity\Thread
+            inversedBy: metadata
+        participant:
+            targetEntity: MinePlus\MainBundle\Entity\User
