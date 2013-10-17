@@ -1,0 +1,34 @@
+{% extends 'FOSMessageBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <h2>{{ thread.subject }}</h2> <hr />
+
+    {% for message in thread.messages %}
+        {% if app.user.username == message.sender %}
+            {% set class ='pull-right' %}
+        {% endif %}
+    
+        <div class="row col-lg-12"> {# to be sure every message has it's own row #}
+            <blockquote {% if app.user.username == message.sender %}class="pull-right"{% endif %}>
+                <p>{{ message.body }}</p>
+                <small>{{ message.sender }},  {{ time_diff(message.createdAt) }}</small>
+            </blockquote>
+        </div>
+    {% endfor %}
+    
+    <form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
+        <div class="row">
+            <div class="col-lg-10">
+                {# TODO: Remove the 'Body' label somehow. #}
+                {{ form_widget(form) }}
+            </div>
+            
+            <div class="col-lg-2">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+    
+
+{% endblock %}

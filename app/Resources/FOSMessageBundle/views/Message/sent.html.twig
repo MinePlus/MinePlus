@@ -1,0 +1,16 @@
+{% extends 'FOSMessageBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <h2>
+        <a href="{{ path('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a>
+        {% trans from 'FOSMessageBundle' %}sent{% endtrans %}
+        <a class="btn btn-primary pull-right" href="{{ path('fos_message_thread_new') }}">
+            {% trans from 'FOSMessageBundle' %}send_new{% endtrans %}
+        </a>
+    </h2>
+    <hr />
+    
+    {% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+
+{% endblock %}

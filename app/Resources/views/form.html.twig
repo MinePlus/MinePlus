@@ -1,0 +1,17 @@
+{% block textarea_widget %}
+    <textarea {{ block('widget_attributes') }} class="form-control">{{ value }}</textarea>
+{% endblock %}
+
+{% block text_widget %}
+    <input type="text" class="form-control" {{ block('widget_attributes') }} />
+{% endblock %}
+    
+{% block submit_widget %}
+    <button type="submit" class="btn btn-default" {{ block('widget_attributes') }} />
+{% endblock %}
+    
+{% block button_widget %}
+    <button type="{{ type|default('button') }}" {{ block('widget_attributes') }} >
+        {{ label|trans({}, translation_domain) }}
+    </button>
+{% endblock %}

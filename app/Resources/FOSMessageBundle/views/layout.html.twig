@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {% trans from 'FOSMessageBundle' %}messenger{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    {% block fos_message_content %}
+    {% endblock %}
+{% endblock %}

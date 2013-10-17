@@ -1,0 +1,61 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
+            <th>{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if threads %}
+            {% for thread in threads %}
+                <tr {% if not fos_message_is_read(thread) %}class="warning"{% endif %}>
+                    <td>
+                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+                            {{ thread.subject }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ thread.createdBy }}
+                    </td>
+                    <td>
+                        {{ time_diff(thread.createdAt) }}
+                    </td>
+                    <td>
+                        {{ thread.messages|length }}
+                    </td>
+                    <td>
+                        {% if thread.lastMessage %}
+                            <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
+                                →
+                            </a>
+                            {{ avatar(thread.lastMessage.sender, 16)|raw }}
+                            {{ time_diff(thread.lastMessage.createdAt) }}
+                        {% else %}
+                            ----
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}" method="post">
+                            <button type="submit" class="btn btn-danger">
+                                {{ macro.icon('trash') }}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
+                </td>
+            </tr>
+        {% endif %}
+
+    </tbody>
+
+</table>
