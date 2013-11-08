@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <services>
+        <service id="mineplus.twig.config_extension" class="MinePlus\MainBundle\Twig\ConfigExtension">
+            <tag name="twig.extension" />
+            
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+        
+        <service id="mineplus.twig.avatar_extension" class="MinePlus\MainBundle\Twig\AvatarExtension">
+            <tag name="twig.extension" />
+            
+            <argument type="service" id="router" />
+        </service>
+        
+        <service id="mineplus.main.topic.chat" class="MinePlus\MainBundle\Topic\ChatTopic" />
+        
+        <service id="mineplus.main.session.handler.doctrine" class="MinePlus\MainBundle\SessionStorage\DoctrineSessionHandler">
+            <call method="setDoctrine">
+                <argument type="service" id="doctrine" />
+            </call>
+        </service>
+        
+        <service id="sonata.admin.user" class="MinePlus\MainBundle\Admin\UserAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Users" label="Users" />
+            
+            <call method="setTranslationDomain">
+                <argument>MinePlusMainBundle</argument>
+            </call>
+            
+            <argument />
+            <argument>MinePlus\MainBundle\Entity\User</argument>
+            <argument />
+        </service>
+        
+        <service id="mineplus.main.bootstrap_renderer" class="MinePlus\MainBundle\Menu\BootstrapRenderer" scope="request">
+            <tag name="knp_menu.renderer" alias="bootstrap" />
+            
+            <call method="setTemplatingEngine">
+                <argument type="service" id="templating" />
+            </call>
+            <call method="setCurrentMarker">
+                <argument type="service" id="menu.current_marker" />
+            </call>
+        </service>
+        
+        <service id="menu.current_marker" class="MinePlus\MainBundle\Menu\CurrentMarker" scope="request">
+            <argument type="service" id="request" />
+        </service>
+    </services>
+</container>
