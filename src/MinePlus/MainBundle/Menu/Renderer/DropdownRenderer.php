@@ -37,7 +37,7 @@ class MainRenderer implements RendererInterface
         
         $options['menu'] = $item;
         
-        return $this->engine->render('MinePlusMainBundle:Menu:main.html.twig', $options);
+        return $this->engine->render('MinePlusMainBundle:Menu:bootstrap.html.twig', $options);
     }
     
 }
