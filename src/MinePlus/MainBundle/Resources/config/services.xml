@@ -36,8 +36,8 @@
             <argument />
         </service>
         
-        <service id="mineplus.main.bootstrap_renderer" class="MinePlus\MainBundle\Menu\BootstrapRenderer" scope="request">
-            <tag name="knp_menu.renderer" alias="bootstrap" />
+        <service id="mineplus.main.bootstrap_renderer" class="MinePlus\MainBundle\Menu\Renderer\MainRenderer" scope="request">
+            <tag name="knp_menu.renderer" alias="main" />
             
             <call method="setTemplatingEngine">
                 <argument type="service" id="templating" />

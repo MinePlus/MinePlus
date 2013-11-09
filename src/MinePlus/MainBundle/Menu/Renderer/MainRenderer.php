@@ -1,12 +1,13 @@
 <?php
 
-namespace MinePlus\MainBundle\Menu;
+namespace MinePlus\MainBundle\Menu\Renderer;
 
 use Symfony\Component\Templating\EngineInterface;
 use Knp\Menu\Renderer\RendererInterface;
 use Knp\Menu\ItemInterface;
+use MinePlus\MainBundle\Menu\CurrentMarker;
 
-class BootstrapRenderer implements RendererInterface
+class MainRenderer implements RendererInterface
 {
     
     protected $engine = null;
