@@ -17,7 +17,7 @@ class Builder extends ContainerAware
         $menu->addChild('dashboard', array('route' => 'dashboard'));
         $menu->addChild('players', array('route' => 'mineplus_main_player_list'));
 
-        return $this->dispatchEvent(new MenuBuildEvent($factory, $menu));
+        return $this->dispatchEvent(new MenuBuildEvent($factory, $menu), Events::MENU_BUILD);
     }
     
     public function userContext(FactoryInterface $factory, array $options)
@@ -26,11 +26,11 @@ class Builder extends ContainerAware
         
         $menu->addChild('logout')->setUri('logout')->setExtra('icon', 'log-out');
 
-        return $this->dispatchEvent(new MenuBuildEvent($factory, $menu));
+        return $this->dispatchEvent(new MenuBuildEvent($factory, $menu), Events::USER_CONTEXT_BUILD);
     }
     
-    protected function dispatchEvent(MenuBuildEvent $event) {
-        $event = $this->container->get('event_dispatcher')->dispatch(Events::MENU_BUILD, $event);
+    protected function dispatchEvent(MenuBuildEvent $event, $name) {
+        $event = $this->container->get('event_dispatcher')->dispatch($name, $event);
         $menu = $event->getMenu();
         
         return $menu;
