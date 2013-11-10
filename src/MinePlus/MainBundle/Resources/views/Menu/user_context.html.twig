@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     {{ avatar(app.user.username, avatar_size|default(20))|raw }}
                     {{ app.user.username }}
                 </a>
@@ -22,7 +22,10 @@
                             </a>
                         </li>
                     {% endblock %}
-                </ul>
+                </ul>#}
+                {% set label = avatar(app.user.username, 20) ~ ' ' %}
+                {% set label = label ~ app.user.username %}
+                {{ knp_menu_render('MinePlusMainBundle:Builder:userContext', {'label': label}, 'dropdown') }}
             </li>
         </ul>
     {% endif %}

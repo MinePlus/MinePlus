@@ -47,6 +47,17 @@
             </call>
         </service>
         
+        <service id="mineplus.main.dropdown_renderer" class="MinePlus\MainBundle\Menu\Renderer\DropdownRenderer" scope="request">
+            <tag name="knp_menu.renderer" alias="dropdown" />
+            
+            <call method="setTemplatingEngine">
+                <argument type="service" id="templating" />
+            </call>
+            <call method="setCurrentMarker">
+                <argument type="service" id="menu.current_marker" />
+            </call>
+        </service>
+        
         <service id="menu.current_marker" class="MinePlus\MainBundle\Menu\CurrentMarker" scope="request">
             <argument type="service" id="request" />
         </service>
