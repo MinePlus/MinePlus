@@ -16,8 +16,12 @@ class Builder extends ContainerAware
         
         $menu->addChild('dashboard', array('route' => 'dashboard'));
         $menu->addChild('players', array('route' => 'mineplus_main_player_list'));
-        
-        $event = $this->container->get('event_dispatcher')->dispatch(Events::MENU_BUILD, new MenuBuildEvent($factory, $menu));
+
+        return $this->dispatchEvent(new MenuBuildEvent($factory, $menu));
+    }
+    
+    protected function dispatchEvent(MenuBuildEvent $event) {
+        $event = $this->container->get('event_dispatcher')->dispatch(Events::MENU_BUILD, $event);
         $menu = $event->getMenu();
         
         return $menu;
