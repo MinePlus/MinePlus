@@ -16,18 +16,7 @@
     </div>
     
     <div class="collapse navbar-collapse navbar-exl-collapse">
-        <ul class="nav navbar-nav">
-            {% for item in menu %}
-                <li {% if item.isCurrent %}class="active"{% endif %}>
-                    <a href="{{ item.uri }}">
-                        {% if item.getExtra('icon') != null %}
-                            {{ macro.icon(item.getExtra('icon')) }}
-                        {% endif %}
-                        {{ item.label|trans }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        {% include 'MinePlusMainBundle:Menu:list.html.twig' with {'ul_attributes': 'class="nav navbar-nav"'} %}
         
         {% include('MinePlusMainBundle:Menu:user_context.html.twig') %}
     </div>

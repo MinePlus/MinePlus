@@ -1,0 +1,12 @@
+<ul {{ ul_attributes|default|raw }}>
+    {% for item in menu %}
+        <li {% if item.isCurrent %}class="active"{% endif %}>
+            <a href="{{ item.uri }}">
+                {% if item.getExtra('icon') != null %}
+                    {{ macro.icon(item.getExtra('icon')) }}
+                {% endif %}
+                {{ item.label|trans }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
