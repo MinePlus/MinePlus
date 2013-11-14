@@ -22,8 +22,6 @@ class CurrentMarker
     /*
      * Checks whether the url's of the given item and it's childs are the current one.
      * 
-     * @todo increase depth
-     * 
      * @param \Knp\Menu\ItemInterface The item to check.
      * @param bool $markRoot Whether to check the root url, too.
      * 
