@@ -4,6 +4,9 @@
     {% for item in menu %}
         <li {% if item.isCurrent %}class="active"{% endif %}>
             <a href="{{ item.uri }}">
+                {% if item.getExtra('badge') != null %}
+                    <span class="badge pull-right">{{ item.getExtra('badge') }}</span>
+                {% endif %}
                 {% if item.getExtra('icon') != null %}
                     {{ macro.icon(item.getExtra('icon')) }}
                 {% endif %}
