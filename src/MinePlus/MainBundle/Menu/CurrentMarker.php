@@ -3,6 +3,7 @@
 namespace MinePlus\MainBundle\Menu;
 
 use Knp\Menu\ItemInterface;
+use Knp\Menu\Iterator\RecursiveItemIterator;
 use Symfony\Component\HttpFoundation\Request;
 
 class CurrentMarker
@@ -28,12 +29,12 @@ class CurrentMarker
      * 
      * @return Knp\Menu\ItemInterface The marked item.
      */
-    public function mark(ItemInterface $menu, $markRoot = false)
+    public function mark(ItemInterface $menu)
     {
-        if ($markRoot and $this->isCurrent($menu->getUri()))
-            $menu->setCurrent(true);
+        $itemIterator = new RecursiveItemIterator($menu);
+        $iterator = new \RecursiveIteratorIterator($itemIterator, \RecursiveIteratorIterator::SELF_FIRST);
         
-        foreach ($menu as $item) {
+        foreach ($iterator as $item) {
             if ($this->isCurrent($item->getUri()))
                 $item->setCurrent(true);
         }
