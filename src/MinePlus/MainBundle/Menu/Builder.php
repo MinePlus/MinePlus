@@ -25,6 +25,13 @@ class Builder extends ContainerAware
         $menu = $factory->createItem('MinePlus');
         
         $menu->addChild('logout')->setUri('logout')->setExtra('icon', 'log-out');
+        
+        // if user is an admin
+        if ($this->container->get('security.context')->isGranted('ROLE_ADMIN')) {
+            $menu
+                ->addChild('admin.area', array('route' => 'sonata_admin_redirect'))
+                ->setExtra('icon', 'briefcase');
+        }
 
         return $this->dispatchEvent(new MenuBuildEvent($factory, $menu), Events::USER_CONTEXT_BUILD);
     }
