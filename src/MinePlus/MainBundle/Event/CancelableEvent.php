@@ -2,7 +2,7 @@
 
 namespace MinePlus\MainBundle\Event;
 
-class Event extends \Symfony\Component\EventDispatcher\Event
+class CancelableEvent extends \Symfony\Component\EventDispatcher\Event
 {
     
     /*

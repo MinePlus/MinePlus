@@ -3,9 +3,9 @@
 namespace MinePlus\MainBundle\Event\Wall;
 
 use MinePlus\MainBundle\Entity\Wall;
-use MinePlus\MainBundle\Event\Event;
+use MinePlus\MainBundle\Event\CancelableEvent;
 
-class WallEvent extends Event
+class WallEvent extends CancelableEvent
 {
     
     /*

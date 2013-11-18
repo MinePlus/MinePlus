@@ -4,9 +4,9 @@ namespace MinePlus\MainBundle\Event\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use MinePlus\MainBundle\Event\Event;
+use MinePlus\MainBundle\Event\CancelableEvent;
 
-class MenuEvent extends Event
+class MenuEvent extends CancelableEvent
 {
     
     protected $factory;
