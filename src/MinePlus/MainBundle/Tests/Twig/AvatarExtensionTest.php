@@ -2,6 +2,7 @@
 
 namespace MinePlus\MainBundle\Tests\Twig;
 
+use \Mockery as m;
 use MinePlus\MainBundle\Twig\AvatarExtension;
 
 class AvatarExtensionTest extends \PHPUnit_Framework_TestCase
@@ -14,17 +15,18 @@ class AvatarExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected $ex;
     
-    public function __construct()
-    {
-        $router = $this->getMockBuilder('\Symfony\Component\Routing\Router')
-            ->disableOriginalConstructor()
-            ->getMock('\Symfony\Component\Routing\Router');
-        
-        $router->expects($this->any())
-            ->method('generate')
-            ->will($this->returnArgument('http://example.org'));
+    public function setUp()
+    {   
+        $router = m::mock('\Symfony\Component\Routing\Router')
+            ->shouldReceive('generate')->andReturn('http://www.example.org')
+            ->mock();
         
         $this->ex = new AvatarExtension($router);
+    }
+    
+    public function tearDown()
+    {
+        m::close();
     }
     
     /*

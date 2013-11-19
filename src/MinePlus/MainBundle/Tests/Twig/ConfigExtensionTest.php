@@ -2,6 +2,7 @@
 
 namespace MinePlus\MainBundle\Test\Twig;
 
+use \Mockery as m;
 use MinePlus\MainBundle\Twig\ConfigExtension;
 
 class ConfigExtensionTest extends \PHPUnit_Framework_TestCase
@@ -12,28 +13,26 @@ class ConfigExtensionTest extends \PHPUnit_Framework_TestCase
      */
     protected $ex;
 
-    public function __construct()
-    {
-        $config = $this->getMock('\MinePlus\MainBundle\Entity\Config');
-        $config->expects($this->once())
-            ->method('getValue')
-            ->will($this->returnValue(42));
+    public function setUp()
+    {   
+        $config = m::mock('\MinePlus\MainBundle\Entity\Config')
+            ->shouldReceive('getValue')->times(1)->andReturn(42)
+            ->mock();
         
-        $repository = $this->getMockBuilder('\Doctrine\ORM\EntityRepository')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $repository->expects($this->once())
-            ->method('__call')
-            ->will($this->returnValue($config));
+        $repository = m::mock('\Doctrine\ORM\EntityRepository')
+            ->shouldReceive('findByName')->times(1)->andReturn($config)
+            ->mock();
         
-        $entityManager = $this->getMockBuilder('\Doctrine\Common\Persistence\ObjectManager')
-            ->disableOriginalConstructor()
-            ->getMock();
-        $entityManager->expects($this->once())
-            ->method('getRepository')
-            ->will($this->returnValue($repository));
+        $entityManager = m::mock('\Doctrine\Common\Persistence\ObjectManager')
+            ->shouldReceive('getRepository')->times(1)->andReturn($repository)
+            ->mock();
         
         $this->ex = new ConfigExtension($entityManager);
+    }
+    
+    public function tearDown()
+    {
+        m::close();
     }
     
     public function testExistent()
