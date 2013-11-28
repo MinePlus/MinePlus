@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c6c87b7ec17614d7bb3313479e646ee7",
+    "hash": "bd514a5c7d0a615b0b15b74449cd9c8b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1324,6 +1324,17 @@
                 "sql"
             ],
             "time": "2013-04-26 18:42:52"
+        },
+        {
+            "name": "jquery/jquery",
+            "version": "2.0.3",
+            "dist": {
+                "type": "file",
+                "url": "http://code.jquery.com/jquery-2.0.3.min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "knplabs/knp-menu",

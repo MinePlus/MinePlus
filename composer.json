@@ -29,7 +29,21 @@
         "mockery/mockery": "~0.8.0",
         "friendsofsymfony/message-bundle": "~1.2.0",
         "twbs/bootstrap": "~3.0.0",
-        "leafo/lessphp": "~0.4.0"
+        "leafo/lessphp": "~0.4.0",
+        "jquery/jquery": "~2.0.0"
+    },
+    "repositories": {
+        "jquery-unofficial": {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "2.0.3",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-2.0.3.min.js",
+                    "type": "file"
+                }
+            }
+        }
     },
     "scripts": {
         "post-install-cmd": [
