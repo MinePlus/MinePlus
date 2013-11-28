@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new MinePlus\VoterBundle\MinePlusVoterBundle(),
             new FOS\MessageBundle\FOSMessageBundle(),
+            new MinePlus\TimelineBundle\MinePlusTimelineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
