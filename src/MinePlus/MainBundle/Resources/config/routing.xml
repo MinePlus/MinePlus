@@ -17,6 +17,6 @@
     </route>
     
     <route id="mineplus_main_player_show" path="/profile/{username}">
-        <default key="_controller">MinePlusMainBundle:User:list</default>
+        <default key="_controller">MinePlusMainBundle:User:show</default>
     </route>
 </routes>
