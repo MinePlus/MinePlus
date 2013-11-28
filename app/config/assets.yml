@@ -1,0 +1,11 @@
+assetic:
+    assets:
+        bootstrap_css:
+            inputs:
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css'
+        bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js'
+        bootstrap_docs_css:
+            inputs:
+                - '%kernel.root_dir%/../vendor/twbs/bootstrap/docs-assets/css/docs.css'

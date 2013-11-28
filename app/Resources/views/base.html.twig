@@ -10,7 +10,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets '@MinePlusMainBundle/Resources/public/css/*' %}
+            {% stylesheets 
+                '@bootstrap_css'
+                '@bootstrap_docs_css' %}
                 <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
@@ -74,7 +76,7 @@
             is important here! #}
             {% javascripts 
                 '@MinePlusMainBundle/Resources/public/js/jquery.min.js' 
-                '@MinePlusMainBundle/Resources/public/js/bootstrap.min.js'
+                '@bootstrap_js'
                 '@JDareClankBundle/Resources/public/js/*'
                 '@JDareClankBundle/Resources/public/js/vendor/*'
                 '@MinePlusMainBundle/Resources/public/js/script.js' %}

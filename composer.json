@@ -27,7 +27,8 @@
         "knplabs/knp-menu-bundle": "~1.1",
         "knplabs/knp-time-bundle": "dev-master",
         "mockery/mockery": "~0.8.0",
-        "friendsofsymfony/message-bundle": "~1.2.0"
+        "friendsofsymfony/message-bundle": "~1.2.0",
+        "twbs/bootstrap": "~3.0.0"
     },
     "scripts": {
         "post-install-cmd": [
