@@ -20,18 +20,20 @@
     </head>
     <body class="{% block body_class %}{% endblock %}">
         {% block body %}
-            {% block navbar %}
-                {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with navbar_options %}
-                    {% block brand %}{% endblock %} {# empty as we have no access to the menu instance #}
-                    
-                    {% block menu %}
-                        {{ mopa_bootstrap_menu('MinePlusMainBundle:Builder:mainMenu') }}
-                        {% if is_granted('ROLE_USER') %}
-                            {{ mopa_bootstrap_menu('MinePlusMainBundle:Builder:userContext') }}
-                        {% endif %}
-                    {% endblock %}
-                {% endembed %}
-            {% endblock %}
+            {% stopwatch 'Render Navbar' %}
+                {% block navbar %}
+                    {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with navbar_options %}
+                        {% block brand %}{% endblock %} {# empty as we have no access to the menu instance #}
+
+                        {% block menu %}
+                            {{ mopa_bootstrap_menu('MinePlusMainBundle:Builder:mainMenu') }}
+                            {% if is_granted('ROLE_USER') %}
+                                {{ mopa_bootstrap_menu('MinePlusMainBundle:Builder:userContext') }}
+                            {% endif %}
+                        {% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            {% endstopwatch %}
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
