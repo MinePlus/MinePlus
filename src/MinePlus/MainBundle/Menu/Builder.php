@@ -24,16 +24,21 @@ class Builder extends ContainerAware
     
     public function userContext(FactoryInterface $factory, array $options)
     {
-        $menu = $factory->createItem('MinePlus');
+        // We don't need to check whether there's a logged-in user, because the template already does.
+        $menu = $factory->createItem('root', array(
+            'navbar' => true,
+            'pull-right' => true
+        ));
         
-        $menu->addChild('logout')->setUri('logout')->setExtra('icon', 'log-out');
+        $username = $this->container->get('security.context')->getToken()->getUsername();
+        $context = $menu->addChild($username, array(
+            'dropdown' => true,
+            'caret' => true
+        ));
         
-        // if user is an admin
-        if ($this->container->get('security.context')->isGranted('ROLE_ADMIN')) {
-            $menu
-                ->addChild('admin.area', array('route' => 'sonata_admin_redirect'))
-                ->setExtra('icon', 'briefcase');
-        }
+        $context->addChild('logout', array(
+            'icon' => 'log-out'
+        ))->setUri('logout');
 
         return $this->dispatchEvent(new MenuBuildEvent($factory, $menu), Events::USER_CONTEXT_BUILD);
     }
