@@ -4,6 +4,7 @@
     why I disabled the 'cssrewrite' filter.
 #}
 {% import '::macros.html.twig' as macro %}
+{% set navbar_options = { fixedTop: false, staticTop: false, inverse: false} %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +12,7 @@
         <title>{% block title %}{{ 'title'|trans }}{% endblock %}</title>
         {% block stylesheets %}
             {% stylesheets 
-                '@bootstrap_css'
+                '@MopaBootstrapBundle/Resources/public/bootstrap/dist/css/bootstrap.css'
                 '@MinePlusMainBundle/Resources/public/less/styles.less' %}
                 <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
             {% endstylesheets %}
@@ -20,7 +21,13 @@
     <body class="{% block body_class %}{% endblock %}">
         {% block body %}
             {% block navbar %}
-                {{ knp_menu_render('MinePlusMainBundle:Builder:mainMenu', {}, 'main') }}
+                {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with navbar_options %}
+                    {% block brand %}{% endblock %} {# empty as we have no access to the menu instance #}
+                    
+                    {% block menu %}
+                        {{ mopa_bootstrap_menu('MinePlusMainBundle:Builder:mainMenu', {'automenu': 'navbar'}) }}
+                    {% endblock %}
+                {% endembed %}
             {% endblock %}
             <div class="container">
                 <div class="row">
@@ -41,8 +48,8 @@
             {# I don't import just the entire js/ directory because the order
             is important here! #}
             {% javascripts 
-                '@jquery' 
-                '@bootstrap_js'
+                '@jquery_js' 
+                '@MopaBootstrapBundle/Resources/public/bootstrap/dist/js/bootstrap.js'
                 '@JDareClankBundle/Resources/public/js/*'
                 '@JDareClankBundle/Resources/public/js/vendor/*'
                 '@MinePlusMainBundle/Resources/public/js/script.js' %}

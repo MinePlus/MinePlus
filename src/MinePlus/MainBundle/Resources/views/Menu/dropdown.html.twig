@@ -1,7 +1,0 @@
-<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    {{ label|raw }}
-    {% if caret|default(false) == true %}
-        <b class="caret"></b>
-    {% endif %}
-</a>
-{% include 'MinePlusMainBundle:Menu:list.html.twig'  with {'ul_attributes': 'class="dropdown-menu"'}%}

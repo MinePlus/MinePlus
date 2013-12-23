@@ -24,40 +24,6 @@
             </call>
         </service>
         
-        <service id="sonata.admin.user" class="MinePlus\MainBundle\Admin\UserAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Users" label="Users" />
-            
-            <call method="setTranslationDomain">
-                <argument>MinePlusMainBundle</argument>
-            </call>
-            
-            <argument />
-            <argument>MinePlus\MainBundle\Entity\User</argument>
-            <argument />
-        </service>
-        
-        <service id="mineplus.main.bootstrap_renderer" class="MinePlus\MainBundle\Menu\Renderer\MainRenderer" scope="request">
-            <tag name="knp_menu.renderer" alias="main" />
-            
-            <call method="setTemplatingEngine">
-                <argument type="service" id="templating" />
-            </call>
-            <call method="setCurrentMarker">
-                <argument type="service" id="menu.current_marker" />
-            </call>
-        </service>
-        
-        <service id="mineplus.main.dropdown_renderer" class="MinePlus\MainBundle\Menu\Renderer\DropdownRenderer" scope="request">
-            <tag name="knp_menu.renderer" alias="dropdown" />
-            
-            <call method="setTemplatingEngine">
-                <argument type="service" id="templating" />
-            </call>
-            <call method="setCurrentMarker">
-                <argument type="service" id="menu.current_marker" />
-            </call>
-        </service>
-        
         <service id="menu.current_marker" class="MinePlus\MainBundle\Menu\CurrentMarker" scope="request">
             <argument type="service" id="request" />
         </service>

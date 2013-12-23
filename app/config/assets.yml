@@ -4,17 +4,6 @@ assetic:
         lessphp:
             apply_to: "\.less$"
     assets:
-        # CSS Assets
-        bootstrap_css:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css'
-        bootstrap_docs_css:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twbs/bootstrap/docs-assets/css/docs.css'
-        # JavaScript Assets
-        bootstrap_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js'
-        jquery:
+        jquery_js:
             inputs:
                 - '%kernel.root_dir%/../vendor/jquery/jquery/jquery-2.0.3.min.js'

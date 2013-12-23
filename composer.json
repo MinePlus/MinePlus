@@ -22,15 +22,14 @@
         "elao/web-profiler-extra-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "jdare/clank-bundle": "dev-master",
-        "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "knplabs/knp-menu-bundle": "~1.1",
+        "knplabs/knp-menu-bundle": "2.0.x-dev",
         "knplabs/knp-time-bundle": "dev-master",
         "mockery/mockery": "~0.8.0",
         "friendsofsymfony/message-bundle": "~1.2.0",
         "twbs/bootstrap": "~3.0.0",
         "leafo/lessphp": "~0.4.0",
-        "jquery/jquery": "~2.0.0"
+        "jquery/jquery": "~2.0.0",
+        "mopa/bootstrap-bundle": "dev-master"
     },
     "repositories": {
         "jquery-unofficial": {
@@ -50,29 +49,26 @@
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
         ]
     },
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.3-dev"
         }
     },
     "require-dev": {
