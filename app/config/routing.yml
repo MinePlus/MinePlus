@@ -1,7 +1,3 @@
-mine_plus_minecraft:
-    resource: "@MinePlusMinecraftBundle/Resources/config/routing.yml"
-    prefix:   /
-
 mine_plus_main:
     resource: "@MinePlusMainBundle/Resources/config/routing.xml"
     prefix:   /
